@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from datetime import datetime,timedelta
 from django.utils.timezone import now
 # Create your models here.
@@ -20,4 +21,3 @@ class Paciente(models.Model):
 	fechaAdmision=models.DateTimeField(default=timezone.now,verbose_name='FECHA DE ADMISION')
 	ocupacion=models.DateTimeField(default=timezone.now,verbose_name='OCUPACION')
 	empresa=models.CharField(max_length=100,verbose_name='EMPRESA')
-	
