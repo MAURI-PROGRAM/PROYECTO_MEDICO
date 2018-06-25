@@ -18,7 +18,6 @@ class Paciente(models.Model):
 	grupoCultural=models.CharField(max_length=100,verbose_name='GRUPO CULTURAL')
 	estadoCivil=models.CharField(max_length=3,choices=(('SOL', 'Soltero'),('CAS', 'Casado'),('DIV', 'Divorciado'),('VIU', 'Viudo'),('UNL', 'Unión libre')))
 	instruccion=models.CharField(max_length=100,verbose_name='INSTRUCION EDUCATIVA')
-	fechaAdmision=models.DateTimeField(default=timezone.now,verbose_name='FECHA DE ADMISION')
 	ocupacion=models.CharField(max_length=100,verbose_name='OCUPACION')
 	empresa=models.CharField(max_length=100,verbose_name='EMPRESA')
 	tipo_sangre=models.CharField(max_length=100,verbose_name='TIPO DE SANGRE')
@@ -31,3 +30,6 @@ class Paciente(models.Model):
 	telefono_pariente=models.CharField(max_length=9,verbose_name='TELEFONO DEL REFERIDO')
 	celular_pariente=models.CharField(max_length=10,verbose_name='CELULAR DEL REFERIDO')
 	foto=models.ImageField(upload_to='fotos')
+	fech_creado=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE ADMISION')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+
