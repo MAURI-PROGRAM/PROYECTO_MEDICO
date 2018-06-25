@@ -33,3 +33,18 @@ class Paciente(models.Model):
 	fech_creado=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE ADMISION')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
+
+class Diagnostico(models.Model):
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
+	precion_arterial=models.CharField(max_length=30,verbose_name='PRESION ARTERIAL')
+	temperatura=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='TEMPERATURA(°C)')
+	peso=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='PASO(KG)')
+	evolucion=models.CharField(max_length=300,verbose_name='EVOLUCION')
+	pulso=models.CharField(max_length=20,verbose_name='PULSO')
+	saturacion_oxigeno=models.CharField(max_length=20,verbose_name='SATURACION DE OXIGENO')
+	talla=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='ESTATURA')
+	idx=models.CharField(max_length=100,verbose_name='IDX')
+	exmenes=models.CharField(max_length=200,verbose_name='EXAMENES')
+	motivo=models.CharField(max_length=300,verbose_name='MOTIVO')
+	fechaDiagnostico=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE DIAGNOSTICO')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
