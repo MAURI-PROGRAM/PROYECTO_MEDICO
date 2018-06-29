@@ -1,0 +1,9 @@
+{%if all_pacientes%}
+	<ul>
+		{% for paciente in all_pacientes %}
+		<li><a href="{{paciente.id}}">{{paciente.nombre1}}</a></li>
+		{%endfor%}
+	</ul>
+{%else%}
+	<h3>Usted no puede verlo</h3>
+{%endif%}
