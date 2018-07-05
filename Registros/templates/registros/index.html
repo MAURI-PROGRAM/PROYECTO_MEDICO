@@ -1,7 +1,7 @@
 {%if all_pacientes%}
 	<ul>
 		{% for paciente in all_pacientes %}
-		<li><a href="{% url 'detalles' paciente.id %}">{{paciente.nombre1}}</a></li>
+		<li><a href="{% url 'registros:detalles' paciente.id %}">{{paciente.nombre1}}</a></li>
 		{%endfor%}
 	</ul>
 {%else%}
