@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.http import Http404
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from .models import Paciente
@@ -13,9 +12,6 @@ def index(request):
 
 
 def detail(request,id_p):
-	try:
-		paciente=Paciente.objects.get(pk=id_p)
-		cotexto={'paciente' : paciente}
-	except Paciente.DoesNotExist:
-		raise Http404("Album no existe")
+	paciente=get_object_or_404(Paciente,pk=id_p)
+	cotexto={'paciente' : paciente}
 	return render(request,'registros/detail.html',cotexto)
