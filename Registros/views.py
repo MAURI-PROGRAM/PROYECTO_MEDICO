@@ -9,8 +9,6 @@ def index(request):
 	cotexto={'all_pacientes' : all_pacientes}
 	return render(request,'registros/index.html',cotexto)
 
-
-
 def detail(request,id_p):
 	paciente=get_object_or_404(Paciente,pk=id_p)
 	cotexto={'paciente' : paciente}

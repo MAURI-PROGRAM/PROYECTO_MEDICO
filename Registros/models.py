@@ -36,7 +36,6 @@ class Paciente(models.Model):
 	def __str__(self):
 		return self.apellPadre+' '+self.apellMadre+' '+self.apellPadre+' '+self.nombre1+' '+self.nombre2
 
-
 class Diagnostico(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
 	precion_arterial=models.CharField(max_length=30,verbose_name='PRESION ARTERIAL')
@@ -51,3 +50,9 @@ class Diagnostico(models.Model):
 	motivo=models.CharField(max_length=300,verbose_name='MOTIVO')
 	fechaDiagnostico=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE DIAGNOSTICO')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+
+class farmacoterapia(models.Model):
+	diagnostico= models.ForeignKey(Diagnostico, on_delete=models.CASCADE,verbose_name='DIAGNOSTICO')
+	farmaco=models.CharField(max_length=300,verbose_name='FARMACO')
+	adminitracion=models.CharField(max_length=300,verbose_name='ADMINITRACION')
+	comentario=models.CharField(max_length=300,verbose_name='ADMINITRACION')
