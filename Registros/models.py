@@ -81,6 +81,7 @@ class analisisMamas(models.Model):
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
 class analisisAbdominal(models.Model):
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
 	movilidad_higado=models.CharField(max_length=20,choices=(('NORMAL', 'Normal'),('ANORMAL', 'Anormal')))
 	bordes_higado=models.CharField(max_length=20,choices=(('REGULAR', 'Regulares'),('IRREGULAR', 'Irregulares')))
 	dimension_higado=models.CharField(max_length=20,choices=(('NORMALES', 'Normales'),('OTROS', 'Otros')))
@@ -106,6 +107,7 @@ class analisisAbdominal(models.Model):
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
 class analisisObstetrico(models.Model):
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
 	numero=models.PositiveSmallIntegerField(default=1)
 	situacion=models.CharField(max_length=20,choices=(('LONGITUDINAL', 'Longitudinal'),('TRANSVERSAL', 'TRANSVERSAL'),('OBLICUA', 'Oblicua')))
 	presentacion=models.CharField(max_length=20,choices=(('CEFALICO', 'Cefalico'),('PODALICO', 'Podalico'),('OTROS', 'Otros')))
@@ -128,3 +130,45 @@ class analisisObstetrico(models.Model):
 	circulardecordon=models.CharField(max_length=2,choices=(('NO', 'No'),('SI', 'Si')))
 	observaciones=models.CharField(max_length=300,verbose_name='OBSERVACIONES')
 	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA:El estudio Ultrasonografico es compatible con:')
+	fech_analisisobstetrico=models.DateTimeField(auto_now_add=True,verbose_name='FECHA ANALISIS OBSTETRICO')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+
+class ecografiaRenal(models.Model): 
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
+	motivoExamen=models.CharField(max_length=500,verbose_name='MOTIVO DEL EXAMEN')
+	movilidad_riñonder=models.CharField(max_length=20,choices=(('NORMAL', 'Normal'),('ANORMAL', 'Anormal')))
+	movilidad_riñonizq=models.CharField(max_length=20,choices=(('NORMAL', 'Normal'),('ANORMAL', 'Anormal')))
+	ecogenicidad_riñonder=models.CharField(max_length=20,choices=(('NORMAL', 'Normal'),('AUMENTADA', 'Aumentada'),('DISMINUIDA', 'Disminuida')))
+	ecogenicidad_riñonizq=models.CharField(max_length=20,choices=(('NORMAL', 'Normal'),('AUMENTADA', 'Aumentada'),('DISMINUIDA', 'Disminuida')))
+	medidalongitud_riñonder=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Longitudinal(mm)')
+	medidalongitud_riñonizq=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Longitudinal(mm)')
+	medidaparenquima_riñonder=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Parenquima(mm)')
+	medidaparenquima_riñonizq=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Parenquima(mm)')
+	imgExpansivas_solidasder=models.CharField(max_length=2,choices=(('NO', 'No'),('SI', 'Si')))
+	imgExpansivas_solidasizq=models.CharField(max_length=2,choices=(('NO', 'No'),('SI', 'Si')))
+	imgExpansivas_quisticasder=models.CharField(max_length=2,choices=(('NO', 'No'),('SI', 'Si')))
+	imgExpansivas_quisticasizq=models.CharField(max_length=2,choices=(('NO', 'No'),('SI', 'Si')))
+	hidronefrosisder=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Hidronefrosis(mm)')
+	hidronefrosisizq=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Hidronefrosis(mm)')
+	microlitiasisder=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Microlitiasis(mm)')
+	microlitiasisizq=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Microlitiasis(mm)')
+	calculo_der=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Calculos(mm)')
+	calculo_izq=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='Calculos(mm)')
+	descripcionder=models.CharField(max_length=500,verbose_name='DESCRIPCION')
+	descripciondizq=models.CharField(max_length=500,verbose_name='DESCRIPCION')
+	replecion=models.CharField(max_length=20,choices=(('NORMAL', 'Normal'),('MINIMO', 'Minimo'),('EXCESIVA', 'Excesova')))
+	paredes=models.CharField(max_length=20,choices=(('NORMAL', 'Normal'),('DELGADA', 'Delgada'),('ENGROSADA', 'Engrosada')))
+	contenidoAnecoico=models.CharField(max_length=200,verbose_name='Conteniso anecoico')
+	imgExpansivasvegiga=models.CharField(max_length=200,verbose_name='Imagenes expansivas')
+	calculointerior=models.CharField(max_length=200,verbose_name='Calculos en su interior')
+	volpremicional=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='volpremicional(cc)')
+	volpostmiccional=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='volpostmiccional(cc)')
+	retencion=models.DecimalField(max_digits=10, decimal_places=2,verbose_name='retencion(cc)')
+	descripcionveg=models.CharField(max_length=500,verbose_name='DESCRIPCION')
+	observaciones=models.CharField(max_length=200,verbose_name='OBSERBACIONES')
+	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
+	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO RENAL')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+
+
+
