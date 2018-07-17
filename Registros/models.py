@@ -171,4 +171,26 @@ class ecografiaRenal(models.Model):
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
 
+class ecografiaginecologico(models.Model):
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
+	motivoExamen=models.CharField(max_length=500,verbose_name='MOTIVO DEL EXAMEN')
+	posicionUtero=models.CharField(max_length=20,choices=(('ANTEVERSO', 'Anteverso'),('CENTRAL', 'Central'),('RETROVRSO', 'Retroverso')))
+	contornoUtero=models.CharField(max_length=100,verbose_name='CONTORNO')
+	ecoestructura=models.CharField(max_length=100,verbose_name='ESTRUCTURA')
+	medidas=models.CharField(max_length=100,verbose_name='MEDIDAS')
+	endometrio=models.CharField(max_length=20,choices=(('MENSTRUAL', 'Menstrual'),('PROLIF', 'Prolif.'),('PERIOF', 'Periof.'),('SECRET', 'Secret')))
+	descripcion=models.CharField(max_length=500,verbose_name='DESCRIPCION')
+	anexodermedidas=models.CharField(max_length=200,verbose_name='DESCRIPCION')
+	anexodermasas=models.CharField(max_length=20,choices=(('NO', 'No'),('QUISTE', 'Quiste.'),('SOLIDAS', 'Solidas.')))
+	anexoderdescripcion=models.CharField(max_length=300,verbose_name='DESCRIPCION')
+	anexoizqmedidas=models.CharField(max_length=200,verbose_name='DESCRIPCION')
+	anexoizqmasas=models.CharField(max_length=20,choices=(('NO', 'No'),('QUISTE', 'Quiste.'),('SOLIDAS', 'Solidas.')))
+	anexoizqdescripcion=models.CharField(max_length=300,verbose_name='DESCRIPCION')
+	liquidolibre=models.CharField(max_length=20,choices=(('NO', 'No'),('ESCASO', 'Escaso.'),('MODERADO', 'Moderado.'),('ABUNDANTE', 'Abundante.')))
+	observacion=models.CharField(max_length=500,verbose_name='OBSERVACION')
+	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
+	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO GINECOLOGICO')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+
+
 
