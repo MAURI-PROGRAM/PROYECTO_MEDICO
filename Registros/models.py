@@ -192,5 +192,16 @@ class ecografiaginecologico(models.Model):
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO GINECOLOGICO')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
-
-
+class ecografiatesticular(models.Model):
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
+	motivoExamen=models.CharField(max_length=500,verbose_name='MOTIVO DEL EXAMEN')
+	testiculoder=models.CharField(max_length=300,verbose_name='DERECHO')
+	epididimoder=models.CharField(max_length=300,verbose_name='EPIDIDIMODER')
+	liqescrotalder=models.CharField(max_length=300,verbose_name='LIQUIDO INTRA ESCROTAL')
+	testiculoizq=models.CharField(max_length=300,verbose_name='IZQUIERDO')
+	epididimoizq=models.CharField(max_length=300,verbose_name='EPIDIDIMODER')
+	liqescrotalizq=models.CharField(max_length=300,verbose_name='LIQUIDO INTRA ESCROTAL')
+	observacion=models.CharField(max_length=500,verbose_name='OBSERVACION')
+	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
+	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO TESTICULAR')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
