@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Paciente,Diagnostico,farmacoterapia,analisisMamas,analisisAbdominal,analisisObstetrico,ecografiaRenal,ecografiaginecologico,ecografiatesticular
+from .models import Paciente,Diagnostico,farmacoterapia,analisisMamas,analisisAbdominal,analisisObstetrico,ecografiaRenal,ecografiaprostata,ecografiaginecologico,ecografiatesticular
 # Register your models here.
 
 admin.site.register(Paciente)
@@ -11,3 +11,4 @@ admin.site.register(analisisObstetrico)
 admin.site.register(ecografiaRenal)
 admin.site.register(ecografiaginecologico)
 admin.site.register(ecografiatesticular)
+admin.site.register(ecografiaprostata)
