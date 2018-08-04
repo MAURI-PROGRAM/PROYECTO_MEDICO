@@ -33,6 +33,9 @@ class Paciente(models.Model):
 	fech_creado=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE ADMISION')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
+	def get_avsolute_url(self):
+		return reverse('music:detail',kwars={'pk':self.pk})
+
 	def __str__(self):
 		return self.apellPadre+' '+self.apellMadre+' '+self.apellPadre+' '+self.nombre1+' '+self.nombre2
 

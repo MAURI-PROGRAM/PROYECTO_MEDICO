@@ -4,6 +4,7 @@ from . import views
 app_name='registros'
 
 urlpatterns = [
-	path('', views.index,name='index'),
-	path('<int:id_p>', views.detail,name='detalles'),
+	path('', views.IndexView.as_view(),name='index'),
+	path('<int:id_p>', views.DetailView.as_view(),name='detalles'),
+	path('album/add/',views.PacienteCreate.as_view(),name='album-add'),
 ]
