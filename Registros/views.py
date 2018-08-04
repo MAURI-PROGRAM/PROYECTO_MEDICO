@@ -1,6 +1,7 @@
 from django.views import generic
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
-from . models import Paciente
+from django.urls import reverse
+from .models import Paciente
 
 
 
@@ -18,4 +19,13 @@ class DetailView(generic.DetailView):
 
 class PacienteCreate(CreateView):
 	model=Paciente
-	fields=['']
+	fields='__all__'
+
+class PacienteUpdate(UpdateView):
+	model=Paciente
+	fields=['cedula','nombre1']
+
+# class PacienteDelete(DeleteView):
+# 	model=Paciente
+# 	success_url=reverse('registros:index')
+# 	fields=['cedula','nombre1']
