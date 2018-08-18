@@ -55,10 +55,10 @@ class Diagnostico(models.Model):
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
 class farmacoterapia(models.Model):
-	diagnostico= models.ForeignKey(Diagnostico, on_delete=models.CASCADE,verbose_name='DIAGNOSTICO')
-	farmaco=models.CharField(max_length=300,verbose_name='FARMACO')
-	adminitracion=models.CharField(max_length=300,verbose_name='ADMINITRACION')
-	comentario=models.CharField(max_length=300,verbose_name='ADMINITRACION')
+	diagnostico= models.ForeignKey(Diagnostico, on_delete=models.CASCADE,verbose_name='Diagnostico')
+	farmaco=models.CharField(max_length=300,verbose_name='Farmaco')
+	adminitracion=models.CharField(max_length=300,verbose_name='Administracion')
+	comentario=models.CharField(max_length=300,verbose_name='Comentario')
 
 class analisisMamas(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
