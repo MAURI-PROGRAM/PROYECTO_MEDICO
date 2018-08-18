@@ -5,11 +5,11 @@ from django.utils.timezone import now
 # Create your models here.
 
 class Paciente(models.Model):
-	cedula=models.CharField(max_length=13,unique=True,verbose_name='CEDULA DE IDENTIDAD')
-	nombre1=models.CharField(max_length=50,verbose_name='PRIMER NOMBRE')
-	nombre2=models.CharField(max_length=50,verbose_name='SEGUNDO NOMBRE')
-	apellPadre=models.CharField(max_length=50,verbose_name='PRIMER APELLIDO')
-	apellMadre=models.CharField(max_length=50,verbose_name='SEGUNDO APELLIDO')
+	cedula=models.CharField(max_length=13,unique=True,verbose_name='Cedula de indentidad')
+	nombre1=models.CharField(max_length=50,verbose_name='Primer nombre')
+	nombre2=models.CharField(max_length=50,verbose_name='Segundo nombre')
+	apellPadre=models.CharField(max_length=50,verbose_name='Apellido paterno')
+	apellMadre=models.CharField(max_length=50,verbose_name='Apellido materno')
 	sexo=models.CharField(max_length=2,choices=(('F', 'Femenino'),('M', 'Masculino'),))
 	direccion=models.CharField(max_length=100,verbose_name='DIRECCION DOMICILIARIA')
 	fechNacimiento=models.DateField('fecha de naciemiento',default=timezone.now)
@@ -22,22 +22,22 @@ class Paciente(models.Model):
 	empresa=models.CharField(max_length=100,verbose_name='EMPRESA')
 	tipo_sangre=models.CharField(max_length=100,verbose_name='TIPO DE SANGRE')
 	tipo_seguro=models.CharField(max_length=100,verbose_name='TIPO DE SEGURIDAD')
-	telefono=models.CharField(max_length=9,verbose_name='TELEFONO DEL PACIENTE')
-	celular=models.CharField(max_length=10,verbose_name='CELULAR DEL PACIENT')
-	correo=models.EmailField(verbose_name='CORREO DEL PACIENT')
+	telefono=models.CharField(max_length=9,verbose_name='Telefono del paciente')
+	celular=models.CharField(max_length=10,verbose_name='Celular del paciente')
+	correo=models.EmailField(verbose_name='Correo del paciente')
 	pariente=models.CharField(max_length=100,verbose_name='NOMBRE PARIENTE')
-	parentesco=models.CharField(max_length=100,verbose_name='PARENTESCO')
-	telefono_pariente=models.CharField(max_length=9,verbose_name='TELEFONO DEL REFERIDO')
-	celular_pariente=models.CharField(max_length=10,verbose_name='CELULAR DEL REFERIDO')
+	parentesco=models.CharField(max_length=100,verbose_name='Parentesco')
+	telefono_pariente=models.CharField(max_length=9,verbose_name='Telefono del pariente')
+	celular_pariente=models.CharField(max_length=10,verbose_name='Celular del referido')
 	foto=models.ImageField(upload_to='fotos')
-	fech_creado=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE ADMISION')
+	fech_creado=models.DateTimeField(auto_now_add=True,verbose_name='Fecha de admision')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
-	def get_avsolute_url(self):
-		return reverse('music:detail',kwars={'pk':self.pk})
+	def get_absolute_url(self):
+		return reverse('registros:detail',kwargs={'pk':self.pk})
 
 	def __str__(self):
-		return self.apellPadre+' '+self.apellMadre+' '+self.apellPadre+' '+self.nombre1+' '+self.nombre2
+		return self.apellPadre+' '+self.apellMadre+' '+self.nombre1+' '+self.nombre2
 
 class Diagnostico(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')

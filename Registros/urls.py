@@ -5,7 +5,8 @@ app_name='registros'
 
 urlpatterns = [
 	path('', views.IndexView.as_view(),name='index'),
-	path('<int:id_p>', views.DetailView.as_view(),name='detalles'),
+	path('<int:pk>', views.DetailView.as_view(),name='detalles'),
 	path('album/add/',views.PacienteCreate.as_view(),name='album-add'),
+	# path('album/add/',views.PacienteCreate.as_view(),name='album-add'),
 	path('pacienteini/',views.get_info,name='pat'),
 ]

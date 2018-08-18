@@ -2,9 +2,9 @@
 <link rel="stylesheet" type"text/css " href="{% static 'music/style,css'%}"/>
 
 
-{%if object_list%}
+{%if all_albums%}
 	<ul>
-		{% for paciente in object_list %}
+		{% for paciente in all_albums %}
 		<li><a href="{% url 'registros:detalles' paciente.id %}">{{paciente.nombre1}}</a></li>
 		{%endfor%}
 	</ul>

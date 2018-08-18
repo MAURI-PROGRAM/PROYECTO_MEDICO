@@ -13,6 +13,7 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
 	model=Paciente
+	context_object_name='paciente'
 	template_name='registros/detail.html'
 
 class PacienteCreate(CreateView):
