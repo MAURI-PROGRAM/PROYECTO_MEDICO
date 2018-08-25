@@ -1,7 +1,5 @@
-{% load staticfiles%}
-<link rel="stylesheet" type"text/css " href="{% static 'music/style,css'%}"/>
-
-
+{%extends "registros/inicio.html"%}
+{%block contenido%}
 {%if all_albums%}
 	<ul>
 		{% for paciente in all_albums %}
@@ -11,3 +9,4 @@
 {%else%}
 	<h3>Usted no puede verlo</h3>
 {%endif%}
+{%endblock%}

@@ -29,6 +29,15 @@ class PacienteUpdate(UpdateView):
 # 	success_url=reverse('registros:index')
 # 	fields=['cedula','nombre1']
 
+def inicio(request):
+    context = {}
+    return render(request, 'registros/inicio.html', context)
+
+def lista(request):
+    context = {}
+    return render(request, 'registros/lista_pacientes.html', context)
+
+
 def get_info(request):
     if request.method == 'POST':
         form = PacienteForm(request.POST)
