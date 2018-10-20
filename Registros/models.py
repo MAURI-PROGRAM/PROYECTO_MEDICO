@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from datetime import datetime,timedelta
 from django.utils.timezone import now
+from django.urls import reverse
 # Create your models here.
 
 class Paciente(models.Model):
@@ -82,6 +83,10 @@ class analisisMamas(models.Model):
 	presuncion=models.CharField(max_length=800,verbose_name='PRESIÓN DIAGNÓSTICA')
 	fech_analisismamas=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE ADMISION')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	def get_absolute_url(self):
+		return reverse('registros:paciente')
+	def __str__(self):
+		return str(self.paciente)+' '+str(self.fech_analisismamas)
 
 class analisisAbdominal(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Paciente,Diagnostico,farmacoterapia
+from .models import Paciente,Diagnostico,farmacoterapia,analisisMamas
 # Register your models here.
 
 
@@ -30,5 +30,7 @@ class DiagnosticoAdmin(admin.ModelAdmin):
     # search_fields = ['nombre1','nombre2','apellPadre','apellMadre','cedula',]
 
 
+
 admin.site.register(Paciente, PacienteAdmin)
 admin.site.register(Diagnostico, DiagnosticoAdmin)
+admin.site.register(analisisMamas)

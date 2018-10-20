@@ -8,7 +8,7 @@ from django.views import View
 from django.http import HttpResponseRedirect
 
 from django.urls import reverse
-from .models import Paciente,Diagnostico
+from .models import Paciente,Diagnostico,analisisMamas
 from .forms import PacienteForm
 from django.shortcuts import render
 
@@ -23,6 +23,29 @@ class IndexView(generic.ListView):
 	def get_queryset(self):
 		return Paciente.objects.all()
 
+class BuscarView(generic.ListView):
+    template_name='registros/busqueda.html'
+    context_object_name='all_albums'
+    def get_queryset(self):
+        return Paciente.objects.all()
+class IngresoView(generic.ListView):
+    template_name='registros/paciente.html'
+    context_object_name='all_albums'
+    def get_queryset(self):
+        return Paciente.objects.all()
+class EcoView(generic.ListView):
+    template_name='registros/ecografias.html'
+    context_object_name='all_albums'
+    def get_queryset(self):
+        return Paciente.objects.all()
+
+class EcomamaCreate(CreateView):
+    model=analisisMamas
+    fields='__all__'
+    template_name='registros/ecomamanew.html'
+
+
+
 # class DetailView(generic.DetailView):
 # 	model=Paciente
 # 	context_object_name='paciente'
@@ -31,6 +54,7 @@ class IndexView(generic.ListView):
 # class PacienteCreate(CreateView):
 # 	model=Paciente
 # 	fields='__all__'
+#   template_name='registros/detail.html'
 
 # class PacienteUpdate(UpdateView):
 # 	model=Paciente
