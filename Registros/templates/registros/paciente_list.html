@@ -1,8 +1,8 @@
 {%extends "registros/inicio.html"%}
 {%block contenido%}
-{%if all_albums%}
+{%if object_list %}
 	<ul>
-		{% for paciente in all_albums %}
+		{% for paciente in object_list  %}
 		<li><a href="#">{{paciente.nombre1}}</a></li>
 		{%endfor%}
 	</ul>

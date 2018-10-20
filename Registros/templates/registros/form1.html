@@ -1,5 +1,214 @@
-<form action="" method="post">
+{%extends "registros/inicio.html"%}
+{%block contenido%}
+
+
+<form class="form-horizontal" action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+	<div class="container-fluid">
+			<div class="col-sm-6" >
+				</br>
+				<div class="form-group">
+					{{form.cedula_id.errors}}
+					<label class="control-label col-sm-5">{{form.cedula_id.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.cedula_id}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.nombre_uno.errors}}
+
+					<label class="control-label col-sm-5">{{form.nombre_uno.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.nombre_uno}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.nombre_dos.errors}}
+					<label class="control-label col-sm-5">{{form.nombre_dos.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.nombre_dos}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.apellido_paterno.errors}}
+					<label class="control-label col-sm-5">{{form.apellido_paterno.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.apellido_paterno}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.apellido_materno.errors}}
+					<label class="control-label col-sm-5">{{form.apellido_materno.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.apellido_materno}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.tipo_sangre.errors}}
+					<label class="control-label col-sm-5">{{form.tipo_sangre.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.tipo_sangre}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.sexo.errors}}
+					<label class="control-label col-sm-5">{{form.sexo.label_tag}} </label>
+					<div class="col-sm-7">
+						{{form.sexo}}
+					</div>
+				</div>
+				<div class="form-group">
+					{{form.estadoCivil.errors}}
+					<label class="control-label col-sm-5">{{form.estadoCivil.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.estadoCivil}}
+					</div>
+				</div>
+				<div class="form-group">
+					{{form.lugarNacimiento.errors}}
+					<label class="control-label col-sm-5">{{form.lugarNacimiento.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.lugarNacimiento}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.nacionalidad.errors}}
+					<label class="control-label col-sm-5">{{form.nacionalidad.label_tag}} </label>
+					<div class="col-sm-7">
+						{{form.nacionalidad}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.grupoCultural.errors}}
+					<label class="control-label col-sm-5">{{form.grupoCultural.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.grupoCultural}}
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+			</br>
+				<div class="form-group">
+					{{form.instruccion.errors}}
+					<label class="control-label col-sm-5">{{form.instruccion.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.instruccion}}
+					</div>
+				</div>
+				</br>
+				<div class="form-group">
+					{{form.direcion.errors}}
+					<label class="control-label col-sm-5">{{form.direcion.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.direcion}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.telefono.errors}}
+					<label class="control-label col-sm-5">{{form.telefono.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.telefono}}
+					</div>
+				</div>
+				<div class="form-group">
+					{{form.celular.errors}}
+					<label class="control-label col-sm-5">{{form.celular.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.celular}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.correo.errors}}
+					<label class="control-label col-sm-5">{{form.correo.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.correo}}
+					</div>
+				</div>
+				<div class="form-group">
+					{{form.pariente.errors}}
+					<label class="control-label col-sm-5">{{form.pariente.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.pariente}}
+					</div>
+				</div>
+				<div class="form-group">
+					{{form.parentescotelefono_pariente.errors}}
+					<label class="control-label col-sm-5">{{form.parentescotelefono_pariente.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.parentescotelefono_pariente}}
+					</div>
+				</div>
+				<div class="form-group">
+					{{form.telefono_pariente.errors}}
+					<label class="control-label col-sm-5">{{form.telefono_pariente.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.telefono_pariente}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.celular_pariente.errors}}
+					<label class="control-label col-sm-5">{{form.celular_pariente.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.celular_pariente}}
+					</div>
+				</div>
+				<div class="form-group">
+					{{form.ocupacion.errors}}
+					<label class="control-label col-sm-5">{{form.ocupacion.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.ocupacion}}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{form.empresa.errors}}
+					<label class="control-label col-sm-5">{{form.empresa.label_tag}}</label>
+					<div class="col-sm-7">
+						{{form.empresa}}
+					</div>
+				</div>
+
+
+
+				<div class="form-group">
+					
+					<label class="control-label col-sm-5"></label>
+					<div class="col-sm-7">
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+				
+			    
+			   
+
+			    
+			    
+			    
+
+			    
+			    
+			    
+
+
+
     <input type="submit" value="Submit">
 </form>
+
+{%endblock%}

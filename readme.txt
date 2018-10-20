@@ -13,3 +13,5 @@ python manage.py createsuperuser
 python manage.py showmigrations
 
 python manage.py migrate --fake Registros zero
+
+retomar
