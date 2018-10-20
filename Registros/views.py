@@ -8,7 +8,7 @@ from django.views import View
 from django.http import HttpResponseRedirect
 
 from django.urls import reverse
-from .models import Paciente,Diagnostico,analisisMamas
+from .models import Paciente,Diagnostico,analisisMamas,analisisAbdominal,analisisObstetrico,ecografiaRenal,ecografiaginecologico,ecografiatesticular
 from .forms import PacienteForm
 from django.shortcuts import render
 
@@ -44,7 +44,31 @@ class EcomamaCreate(CreateView):
     fields='__all__'
     template_name='registros/ecomamanew.html'
 
+class EcoabdomenCreate(CreateView):
+    model=analisisAbdominal
+    fields='__all__'
+    template_name='registros/ecoabdomennew.html'
 
+class EcoobstetricoCreate(CreateView):
+    model=analisisObstetrico
+    fields='__all__'
+    template_name='registros/ecoobstericonew.html'
+
+class EcorenalCreate(CreateView):
+    model=ecografiaRenal
+    fields='__all__'
+    template_name='registros/ecorenalnew.html'
+
+class EcoginecologiaCreate(CreateView):
+    model=ecografiaginecologico
+    fields='__all__'
+    template_name='registros/ecoginecologianew.html'
+
+
+class EcotesticularCreate(CreateView):
+    model=ecografiatesticular
+    fields='__all__'
+    template_name='registros/ecotesticularnew.html'
 
 # class DetailView(generic.DetailView):
 # 	model=Paciente

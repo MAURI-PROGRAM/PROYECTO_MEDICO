@@ -84,7 +84,7 @@ class analisisMamas(models.Model):
 	fech_analisismamas=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE ADMISION')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 	def get_absolute_url(self):
-		return reverse('registros:paciente')
+		return reverse('registros:ecografia')
 	def __str__(self):
 		return str(self.paciente)+' '+str(self.fech_analisismamas)
 
@@ -114,6 +114,12 @@ class analisisAbdominal(models.Model):
 	fech_analisisabdomen=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE ADMISION')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
+	def get_absolute_url(self):
+		return reverse('registros:ecografia')
+
+	def __str__(self):
+		return str(self.paciente)+' '+str(self.fech_analisisabdomen)
+
 class analisisObstetrico(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
 	numero=models.PositiveSmallIntegerField(default=1)
@@ -140,6 +146,12 @@ class analisisObstetrico(models.Model):
 	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA:El estudio Ultrasonografico es compatible con:')
 	fech_analisisobstetrico=models.DateTimeField(auto_now_add=True,verbose_name='FECHA ANALISIS OBSTETRICO')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	
+	def get_absolute_url(self):
+		return reverse('registros:ecografia')
+
+	def __str__(self):
+		return str(self.paciente)+' '+str(self.fech_analisisobstetrico)
 
 class ecografiaRenal(models.Model): 
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
@@ -178,6 +190,12 @@ class ecografiaRenal(models.Model):
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO RENAL')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
+	def get_absolute_url(self):
+		return reverse('registros:ecografia')
+
+	def __str__(self):
+		return str(self.paciente)+' '+str(self.fech_informe)
+
 
 class ecografiaginecologico(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
@@ -200,6 +218,12 @@ class ecografiaginecologico(models.Model):
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO GINECOLOGICO')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 
+	def get_absolute_url(self):
+		return reverse('registros:ecografia')
+
+	def __str__(self):
+		return str(self.paciente)+' '+str(self.fech_informe)
+
 class ecografiatesticular(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
 	motivoExamen=models.CharField(max_length=500,verbose_name='MOTIVO DEL EXAMEN')
@@ -213,6 +237,13 @@ class ecografiatesticular(models.Model):
 	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO TESTICULAR')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+
+	def get_absolute_url(self):
+		return reverse('registros:ecografia')
+
+	def __str__(self):
+		return str(self.paciente)+' '+str(self.fech_informe)
+
 
 class ecografiaprostata(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
@@ -231,3 +262,9 @@ class ecografiaprostata(models.Model):
 	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO PROSTATA')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+
+	def get_absolute_url(self):
+		return reverse('registros:ecografia')
+
+	def __str__(self):
+		return str(self.paciente)+' '+str(self.fech_informe)
