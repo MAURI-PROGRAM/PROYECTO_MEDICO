@@ -20,17 +20,23 @@
         <a class="nav-link" href="">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="busqueda">Busqueda de pacientes</a>
+        <a class="nav-link" href="/registros/busqueda/{{datos.nombre1}}">Busqueda de pacientes</a>
       </li>
-
+      <center>
+      <li>
+        CEDULA : {{datos.cedula}}  NOMBRE : {{datos.nombre1}}{{datos.nombre2}}{{datos.apellPadre}}{{datos.apellMadre}}
+      </li>
+      </center>
     </ul>
+
+
   </div>
 </nav>
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Casa</a></li>
-    <li class="breadcrumb-item"><a href="busqueda">Busqueda</a></li>
+    <li class="breadcrumb-item"><a href="/registros/busqueda/{{datos.nombre1}}">Busqueda</a></li>
     <li class="breadcrumb-item active" aria-current="page">Paciente</li>
   </ol>
 </nav>	
@@ -51,7 +57,7 @@
 			<h5 class="card-title">ECOGRAFIAS</h5>
 			<p class="card-text">Historial clinico del paciente</p>
 		</div>
-		<div class="card-footer text-muted"><a href="ecografia" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+		<div class="card-footer text-muted"><a href="/registros/ecografia/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
 	</div>
 
 	<div class="card text-white bg-danger mb-3" style="width: 14rem;">

@@ -1,3 +1,5 @@
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,13 +43,19 @@
     <li class="breadcrumb-item"><a href="#">Casa</a></li>
     <li class="breadcrumb-item"><a href="">Busqueda</a></li>
     <li class="breadcrumb-item"><a href="paciente">Paciente</a></li>
-    <li class="breadcrumb-item"><a href="ecografia">Ecografias</a></li>
+    <li class="breadcrumb-item"><a href="/registros/ecografia/{{datos.pk}}">Ecografias</a></li>
     <li class="breadcrumb-item active" aria-current="page">Ecografias de mamas</li>
   </ol>
 </nav>	
 
 
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="GUARADAR">
-</form>
+<div class="row">
+    <div class="col-md-4">
+      </div>
+  <div class="col-md-4">
+      <form method="post">{% csrf_token %}
+          {{ form|crispy }}
+          <input type="submit" value="GUARADAR">
+      </form>
+  </div>
+</div>

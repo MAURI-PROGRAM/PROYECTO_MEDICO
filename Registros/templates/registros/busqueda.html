@@ -37,7 +37,7 @@
 <br>
 
 <div class="container">
-  <form class="form-inline">
+  <form class="form-inline" method="GET">
   <div class="form-group col col-lg-8 mx-md-3 mb-2">
     <input type="text" class="form-control col col-lg-12" id="inputPassword2" placeholder="Busqueda por : nombre, cedula">
   </div>
@@ -68,41 +68,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>0925233716</td>
-      <td>Michael Mauricio</td>
-      <td>Merchan Bermello</td>
-      <td>27-10-2018</td>
-      <td><a class="btn btn-primary" href="paciente">Ingresar</a></td>
-    </tr>
-    <tr>
-      <td>0925233716</td>
-      <td>Michael Mauricio</td>
-      <td>Merchan Bermello</td>
-      <td>27-10-2018</td>
-      <td><a class="btn btn-primary" href="paciente">Ingresar</a></td>
-    </tr>
-    <tr>
-      <td>0925233716</td>
-      <td>Michael Mauricio</td>
-      <td>Merchan Bermello</td>
-      <td>27-10-2018</td>
-      <td><a class="btn btn-primary" href="paciente">Ingresar</a></td>
-    </tr>
-    <tr>
-      <td>0925233716</td>
-      <td>Michael Mauricio</td>
-      <td>Merchan Bermello</td>
-      <td>27-10-2018</td>
-      <td><a class="btn btn-primary" href="paciente">Ingresar</a></td>
-    </tr>
-    <tr>
-      <td>0925233716</td>
-      <td>Michael Mauricio</td>
-      <td>Merchan Bermello</td>
-      <td>27-10-2018</td>
-      <td><a class="btn btn-primary" href="paciente">Ingresar</a></td>
-    </tr>
+
+    {% for registro in pacientes_encontrados %}
+        <tr>
+          <td>{{registro.cedula}}</td>
+          <td>{{registro.nombre1}}</td>
+          <td>{{registro.apellPadre}}</td>
+           <td>{{registro.fech_actualizado}}</td>
+           <td><a class="btn btn-primary" href="/registros/paciente/{{registro.pk}}">Ingresar</a></td>
+        </tr>
+    {%endfor%}
+
   </tbody>
   <tfoot>
     <tr>
