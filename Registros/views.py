@@ -24,6 +24,20 @@ class BuscarView(generic.ListView):
         var = self.kwargs.get('nom','')
         return Paciente.objects.filter(Q(nombre1__contains=var) | Q(apellPadre__contains=var) | Q(cedula__contains=var))
 
+from django.core import serializers
+from django.http import HttpResponse
+class BusquedaAjaxView(generic.TemplateView):
+    def get(self,request,*args,**kwargs):
+        var=request.GET['id']
+        if var!='':
+            new = Paciente.objects.filter(Q(nombre1__contains=var) | Q(apellPadre__contains=var) | Q(cedula__contains=var))
+        else:
+            new = {}
+
+        data = serializers.serialize('json',new,fields=('cedula','nombre1','apellPadre','fech_actualizado'))
+        return HttpResponse(data,content_type='application/json')
+
+
 class IngresoView(generic.ListView):
     template_name='registros/paciente.html'
     context_object_name='datos'
@@ -137,3 +151,11 @@ class paciente_new(ListView):
     def get_queryset(self):
         self.paciente = get_object_or_404(Paciente, name=self.kwargs['paciente'])
         return Diagnostico.objects.filter(paciente=self.paciente)
+
+
+class BusquedaView(generic.ListView):
+    template_name='registros/buscar.html' 
+    model= Paciente
+
+
+

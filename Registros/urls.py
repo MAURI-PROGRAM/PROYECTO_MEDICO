@@ -17,4 +17,6 @@ urlpatterns = [
 	path('pacienteini/',views.get_info,name='pat'),
 	path('publishers/', paciente_new.as_view()),
 	path('diagnostico/<paciente>/',paciente_new.as_view()),
+	path('buscar/',views.BusquedaView.as_view()),
+	path('buscar_ajax/',views.BusquedaAjaxView.as_view()),
 ]
