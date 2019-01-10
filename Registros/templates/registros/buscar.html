@@ -4,15 +4,15 @@
 
 {% block principal %}
 <li class="nav-item">
-  <a class="nav-link" href="/registros">Inicio</a>
+  <a class="nav-link" href="{% url 'registros:index'%}">Inicio</a>
 </li>
 <li class="nav-item active">
-  <a class="nav-link" href="/registros/buscar">Busqueda de pacientes</a>
+  <a class="nav-link" href="{% url 'registros:buscar'%}">Busqueda de pacientes</a>
 </li>
 {% endblock %}
 
 {% block lista %}
-<li class="breadcrumb-item"><a href="/registros">Inicio</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
 <li class="breadcrumb-item active" aria-current="page">Busqueda</li>
 {% endblock %}
 
@@ -24,7 +24,7 @@
     <div class="form-group col col-lg-4 mx-md-3 mb-2">
       <input type="text" class="form-control col col-lg-12" placeholder="Busqueda por : nombre, cedula" onkeyup="ImprimirEnConsola(this)">
     </div>
-    <a class="btn btn-primary mb-2" href="/registros/nuevopaciente">+ NUEVO PACIENTE</a>
+    <a class="btn btn-primary mb-2" href="{% url 'registros:newpaciente'%}">+ NUEVO PACIENTE</a>
   </form>
 </div>
 <br>
@@ -86,7 +86,7 @@
     console.log(seleccionada);
     $.ajax({
       data: { 'id': seleccionada },
-      url: '/registros/buscar_ajax/',
+      url: "{% url 'registros:buscarajax'%}",
       type: 'get',
       success: function (data) {
         var html = '';
