@@ -7,6 +7,7 @@ urlpatterns = [
 	path('', views.IndexView.as_view(),name='index'),
 	path('busqueda/<nom>', views.BuscarView.as_view(),name='buscar'),
 	path('paciente/<ident>', views.IngresoView.as_view(),name='paciente'),
+	path('nuevopaciente/', views.Crear_paciente.as_view(),name='pacientes'),
 	path('ecografia/<ident>', views.EcoView.as_view(),name='ecografia'),
 	path('ecomama/<ident>', views.EcomamaCreate.as_view(),name='ecomama'),
 	path('ecoabdomen/<ident>', views.EcoabdomenCreate.as_view(),name='ecoabdomen'),

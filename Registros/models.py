@@ -30,7 +30,7 @@ class Paciente(models.Model):
 	parentesco=models.CharField(max_length=100,verbose_name='Parentesco')
 	telefono_pariente=models.CharField(max_length=9,verbose_name='Telefono del pariente')
 	celular_pariente=models.CharField(max_length=10,verbose_name='Celular del referido')
-	foto=models.ImageField(upload_to='fotos')
+	foto=models.ImageField(upload_to='fotos', null=True,blank=True)
 	fech_creado=models.DateTimeField(auto_now_add=True,verbose_name='Fecha de admision')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 

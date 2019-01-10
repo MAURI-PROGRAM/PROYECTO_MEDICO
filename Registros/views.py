@@ -86,6 +86,14 @@ class EcoobstetricoCreate(CreateView):
             'paciente':paciente,
         }
 
+class Crear_paciente(CreateView):
+    model = Paciente
+    fields='__all__'
+    template_name='registros/paciente_form.html'
+    success_url = '/registros/buscar'
+    success_message = 'Paciente creado correctamente'
+
+
 class EcorenalCreate(CreateView):
     model=ecografiaRenal
     fields='__all__'
@@ -131,20 +139,6 @@ def get_info(request):
         form = PacienteForm()
     return render(request, 'registros/form1.html', {'form': form})
 
-
-class Crear_paciente():
-    initial = {'key': 'value'}
-    template_name = 'form_template.html'
-
-    def get(self, request, *args, **kwargs):
-        form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect('/success/')
-        return render(request, self.template_name, {'form': form})
 
 class paciente_new(ListView):
     template_name = 'registros/diagnostivo_list.html'

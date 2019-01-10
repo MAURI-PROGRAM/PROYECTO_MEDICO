@@ -1,47 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>MAKETA PACIENTES</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
+{% extends 'registros/base.html' %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-success" >
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">CLINICA</a>
+{% block title %}Página de busqueda{% endblock %}
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="">Inicio <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Busqueda de pacientes</a>
-      </li>
+{% block principal %}
+<li class="nav-item">
+  <a class="nav-link" href="/registros">Inicio</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link" href="/registros/buscar">Busqueda de pacientes</a>
+</li>
+{% endblock %}
 
-    </ul>
-  </div>
-</nav>
+{% block lista %}
+<li class="breadcrumb-item"><a href="/registros">Inicio</a></li>
+<li class="breadcrumb-item active" aria-current="page">Busqueda</li>
+{% endblock %}
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="">Casa</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Busqueda</li>
-  </ol>
-</nav>  
+{% block content %}
 
-<br>
 
 <div class="container">
   <form class="form-inline" method="GET">
-  <div class="form-group col col-lg-4 mx-md-3 mb-2">
-    <input type="text" class="form-control col col-lg-12" placeholder="Busqueda por : nombre, cedula" onkeyup="ImprimirEnConsola(this)">
-  </div>
-  <button type="submit" class="btn btn-primary mb-2">+ NUEVO PACIENTE</button>
-</form>
+    <div class="form-group col col-lg-4 mx-md-3 mb-2">
+      <input type="text" class="form-control col col-lg-12" placeholder="Busqueda por : nombre, cedula" onkeyup="ImprimirEnConsola(this)">
+    </div>
+    <a class="btn btn-primary mb-2" href="/registros/nuevopaciente">+ NUEVO PACIENTE</a>
+  </form>
 </div>
 <br>
 
@@ -58,7 +42,7 @@
       <th class="th-sm">Apellidos
         <i class="fa fa-sort float-right" aria-hidden="true"></i>
       </th>
-      <th class="th-sm">Ultima visita
+      <th class="th-sm">Fecha Registro
         <i class="fa fa-sort float-right" aria-hidden="true"></i>
       </th>
       <th class="th-sm">Nueva visita
@@ -87,39 +71,42 @@
 
 
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
 
 <script>window.jQuery || document.write(unescape('%3Cscript src="/js_folder/jquery-1.6.1.min.js"%3E%3C/script%3E'))</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-function ImprimirEnConsola(elemento){
-  var seleccionada = elemento.value;
-  console.log(seleccionada);
-  $.ajax({
-      data:{'id':seleccionada},
-      url:'/registros/buscar_ajax/',
-      type:'get',
-      success: function(data){
-          var html='';
-          for(var i=0;i<data.length;i++){
-            html +='<tr>'
-            html += "<td>"+data[i].fields.cedula+"</td>";
-            html += "<td>"+data[i].fields.nombre1+"</td>";
-            html += "<td>"+data[i].fields.apellPadre+"</td>";
-            html += "<td>"+data[i].fields.fech_actualizado+"</td>";
-            html += '<td><a class="btn btn-primary" href="/registros/paciente/'+data[i].pk+'">Ingresar</a></td>'
-            html +='</tr>'
-            console.log(data[i]);
-          }
-          var element = document.getElementById("datos");
-          element.innerHTML = html;
+  function ImprimirEnConsola(elemento) {
+    var seleccionada = elemento.value;
+    console.log(seleccionada);
+    $.ajax({
+      data: { 'id': seleccionada },
+      url: '/registros/buscar_ajax/',
+      type: 'get',
+      success: function (data) {
+        var html = '';
+        for (var i = 0; i < data.length; i++) {
+          html += '<tr>'
+          html += "<td>" + data[i].fields.cedula + "</td>";
+          html += "<td>" + data[i].fields.nombre1 + "</td>";
+          html += "<td>" + data[i].fields.apellPadre + "</td>";
+          html += "<td>" + data[i].fields.fech_actualizado + "</td>";
+          html += '<td><a class="btn btn-primary" href="/registros/paciente/' + data[i].pk + '">Ingresar</a></td>'
+          html += '</tr>'
+          console.log(data[i]);
+        }
+        var element = document.getElementById("datos");
+        element.innerHTML = html;
       }
-  });
-}
+    });
+  }
 </script>
-
+{% endblock %}
 </body>
 
 </html>
