@@ -1,36 +1,7 @@
-{% extends 'registros/base.html' %}
-
-{% load crispy_forms_tags %}
+{% extends 'registros/base_form.html' %}
 
 {% block title %}Ecografia abdominal{% endblock %}
 
-{% block principal %}
-<li class="nav-item">
-  <a class="nav-link" href="{% url 'registros:index'%}">Inicio</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="{% url 'registros:buscar'%}">Busqueda de pacientes</a>
-</li>
-{% endblock %}
-
-{% block lista %}
-<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
-<li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
-<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Paciente</a></li>
-<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Ecografias</a></li>
+{% block tipoeco %}
 <li class="breadcrumb-item active" aria-current="page">Ecografia Abdominal</li>
-{% endblock %}
-
-{% block content %}
-
-<div class="row">
-  <div class="col-md-4">
-    </div>
-<div class="col-md-4">
-    <form method="post">{% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="GUARADAR">
-    </form>
-</div>
-</div>
 {% endblock %}
