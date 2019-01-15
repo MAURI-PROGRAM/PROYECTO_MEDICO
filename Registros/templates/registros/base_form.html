@@ -13,12 +13,19 @@
 </li>
 {% endblock %}
 
+{%block derecha%}
+</div>
+<div style="color:aliceblue">PACIENTE : {{paciente.nombre1}}&nbsp{{paciente.nombre2}}&nbsp{{paciente.apellPadre}}&nbsp{{paciente.apellMadre}}
+</div>
+{%endblock%}
+
 {% block lista %}
 <li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
 <li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
-<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Paciente</a></li>
-<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Ecografias</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:paciente' ident='3'%}">Paciente</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:ecografia' ident='3'%}">Ecografias</a></li>
 {% block tipoeco %}{% endblock %}
+
 {% endblock %}
 
 {% block content %}

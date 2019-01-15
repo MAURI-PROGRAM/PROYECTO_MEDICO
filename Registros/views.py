@@ -71,59 +71,73 @@ class EcoView(generic.ListView):
 ##################FORMULARIOS PARA ECOGRAFIA##############
 ##########################################################
 
+def get_initial_pri(self, **kwargs):
+    parametro = self.kwargs.get('ident',None)
+    paciente = Paciente.objects.get(pk=parametro)
+    return {'paciente':paciente,}
+
+def get_context_data_pri(self, nomclass,**kwargs):
+    parametro = self.kwargs.get('ident',None)
+    paciente = Paciente.objects.get(pk=parametro)
+    context = super(nomclass, self).get_context_data(**kwargs) 
+    context['paciente']= paciente
+    print(context)
+    return context
+
 class EcomamaCreate(CreateView):
     model = analisisMamas
     fields='__all__'
     template_name='registros/ecomamanew.html'
+    context_object_name='datos'
     def get_initial(self, **kwargs):
-        parametro = self.kwargs.get('ident',None)
-        paciente = Paciente.objects.get(pk=parametro)
-        return {'paciente':paciente,}
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        return get_context_data_pri(self,EcomamaCreate, **kwargs)
 
 class EcoabdomenCreate(CreateView):
     model=analisisAbdominal
     fields='__all__'
     template_name='registros/ecoabdomennew.html'
     def get_initial(self, **kwargs):
-        parametro = self.kwargs.get('ident',None)
-        paciente = Paciente.objects.get(pk=parametro)
-        return {'paciente':paciente,}
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        return get_context_data_pri(self,EcoabdomenCreate, **kwargs)
 
 class EcoobstetricoCreate(CreateView):
     model=analisisObstetrico
     fields='__all__'
     template_name='registros/ecoobstericonew.html'
     def get_initial(self, **kwargs):
-        parametro = self.kwargs.get('ident',None)
-        paciente = Paciente.objects.get(pk=parametro)
-        return {'paciente':paciente,}
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        return get_context_data_pri(self,EcoobstetricoCreate, **kwargs)
 
 class EcorenalCreate(CreateView):
     model=ecografiaRenal
     fields='__all__'
     template_name='registros/ecorenalnew.html'
     def get_initial(self, **kwargs):
-        parametro = self.kwargs.get('ident',None)
-        paciente = Paciente.objects.get(pk=parametro)
-        return {'paciente':paciente,}
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        return get_context_data_pri(self,EcorenalCreate, **kwargs)
 
 class EcoginecologiaCreate(CreateView):
     model=ecografiaginecologico
     fields='__all__'
     template_name='registros/ecoginecologianew.html'
     def get_initial(self, **kwargs):
-        parametro = self.kwargs.get('ident',None)
-        paciente = Paciente.objects.get(pk=parametro)
-        return {'paciente':paciente,}
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        return get_context_data_pri(self,EcoginecologiaCreate, **kwargs)
 
 class EcotesticularCreate(CreateView):
     model=ecografiatesticular
     fields='__all__'
     template_name='registros/ecotesticularnew.html'
     def get_initial(self, **kwargs):
-        parametro = self.kwargs.get('ident',None)
-        paciente = Paciente.objects.get(pk=parametro)
-        return {'paciente':paciente,}
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        return get_context_data_pri(self,EcotesticularCreate, **kwargs)
 
 
 
