@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -9,7 +9,10 @@
 <ul>
 	{% for diagnosticos in paciente.diagnostico_set.all %}
 		<li>{{diagnosticos.motivo}}</li>
+		<li>{{diagnosticos.fechaDiagnostico}}</li>
+		<br>
+		<br>
 	{%endfor%}
 </ul>
 </body>
-</html> -->
+</html>

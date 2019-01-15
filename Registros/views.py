@@ -139,8 +139,13 @@ class EcotesticularCreate(CreateView):
     def get_context_data(self, **kwargs):
         return get_context_data_pri(self,EcotesticularCreate, **kwargs)
 
-
-
+class ListDiagnostico(DetailView):
+    model = Paciente
+    template_name='registros/detail.html'
+    def get_context_data(self,**kwargs):
+        context = super(ListDiagnostico, self).get_context_data(**kwargs) 
+        print(context)
+        return context
 
 
 

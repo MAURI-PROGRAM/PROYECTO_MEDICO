@@ -5,7 +5,7 @@ app_name='registros'
 
 urlpatterns = [
 	path('', views.IndexView.as_view(),name='index'),
-	
+
 	path('buscar/',views.BusquedaView.as_view(),name='buscar'),
 	path('buscar_ajax/',views.BusquedaAjaxView.as_view(),name='buscarajax'),
 
@@ -21,6 +21,6 @@ urlpatterns = [
 	path('ecoginecologia/<ident>', views.EcoginecologiaCreate.as_view(),name='ecoginecologia'),
 	path('ecotesticular/<ident>', views.EcotesticularCreate.as_view(),name='ecotesticular'),
 
-
+	path('paciente/listar_diagnostico/<pk>', views.ListDiagnostico.as_view(),name='lista_diagnostico'),
 
 ]
