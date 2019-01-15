@@ -22,8 +22,8 @@
 {% block lista %}
 <li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
 <li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
-<li class="breadcrumb-item"><a href="{% url 'registros:paciente' ident='3'%}">Paciente</a></li>
-<li class="breadcrumb-item"><a href="{% url 'registros:ecografia' ident='3'%}">Ecografias</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:paciente' ident=paciente.pk %}">Paciente</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:ecografia' ident=paciente.pk %}">Ecografias</a></li>
 {% block tipoeco %}{% endblock %}
 
 {% endblock %}
