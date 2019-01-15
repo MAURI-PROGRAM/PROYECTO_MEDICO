@@ -1,41 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>MAKETA PACIENTES</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
+{% extends 'registros/base.html'%}
+{% block title %}Ecografias{% endblock %}
+
+{% block principal %}
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'registros:index'%}">Inicio</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link" href="{% url 'registros:buscar'%}">Busqueda de pacientes</a>
+</li>
+{% endblock %}
+
+{%block derecha%}
+</div>
+<div style="color:aliceblue">PACIENTE : {{datos.nombre1}}&nbsp{{datos.nombre2}}&nbsp{{datos.apellPadre}}&nbsp{{datos.apellMadre}}
+</div>
+{%endblock%}
+
+{% block lista %}
+<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
+<li class="breadcrumb-item"><a href="/registros/paciente/{{datos.pk}}">Paciente</a></li>
+<li class="breadcrumb-item active" aria-current="page">Ecografias</li>
+{% endblock %}
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-success" >
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">CLINICA</a>
-
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/registros/busqueda/{{datos.nombre1}}">Busqueda de pacientes</a>
-      </li>
-    </ul>
-  </div>
-       <div style="color:aliceblue">PACIENTE : {{datos.nombre1}}&nbsp{{datos.nombre2}}&nbsp{{datos.apellPadre}}&nbsp{{datos.apellMadre}}</div>
-</nav>
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Casa</a></li>
-    <li class="breadcrumb-item"><a href="/registros/busqueda/{{datos.nombre1}}">Busqueda</a></li>
-    <li class="breadcrumb-item"><a href="/registros/paciente/{{datos.pk}}">Paciente</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Ecografias</li>
-  </ol>
-</nav>	
-
+{% block content %}
 <div class="card-deck">
 	<div class="card text-white bg-info mb-3" style="width: 14rem;">
 		<img class="card-img-top" src="ecomamas.jpg" alt="Card image cap">
@@ -83,12 +72,5 @@
 		</div>
 		<div class="card-footer text-muted"><a href="/registros/ecotesticular/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
 	</div>
-
 </div>
-
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'registros/base.html'%}
+{% block title %}Opciones del paciente{% endblock %}
+
+{% block principal %}
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'registros:index'%}">Inicio</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link" href="{% url 'registros:buscar'%}">Busqueda de pacientes</a>
+</li>
+{% endblock %}
+
+{%block derecha%}
+</div>
+<div style="color:aliceblue">PACIENTE : {{datos.nombre1}}&nbsp{{datos.nombre2}}&nbsp{{datos.apellPadre}}&nbsp{{datos.apellMadre}}
+</div>
+{%endblock%}
+
+{% block lista %}
+<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
+<li class="breadcrumb-item active" aria-current="page">Paciente</li>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="card-deck">
+	<div class="card text-white bg-info mb-3" style="width: 14rem;">
+		<img class="card-img-top" src="diagnostico.png" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">DIAGNOTICO</h5>
+			<p class="card-text">Historial clinico del paciente</p>
+		</div>
+		<div class="card-footer text-muted"><a href="/Registros/diagnostico/add/" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+	</div>
+
+	<div class="card text-white bg-success mb-3" style="width: 14rem;">
+		<img class="card-img-top" src="ecografias.jpg" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">ECOGRAFIAS</h5>
+			<p class="card-text">Historial clinico del paciente</p>
+		</div>
+		<div class="card-footer text-muted"><a href="/registros/ecografia/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+	</div>
+
+	<div class="card text-white bg-danger mb-3" style="width: 14rem;">
+		<img class="card-img-top" src="rayos x.jpg" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">RAYOS X</h5>
+			<p class="card-text">Historial clinico del paciente</p>
+		</div>
+		<div class="card-footer text-muted"><a href="#" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+	</div>
+
+	<div class="card text-white bg-info mb-3" style="width: 15rem;">
+		<img class="card-img-top" src="desintrometria.jpg" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">DESINTROMETRIA</h5>
+			<p class="card-text">Historial clinico del paciente</p>
+		</div>
+		<div class="card-footer text-muted"><a href="#" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+	</div>
+
+	<div class="card text-white bg-warning mb-3" style="width: 15rem;">
+		<img class="card-img-top" src="terapias.jpg" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">TERAPIAS</h5>
+			<p class="card-text">Historial clinico del paciente</p>
+		</div>
+		<div class="card-footer text-muted"><a href="#" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+	</div>
+	<div class="card text-white bg-dark  mb-3" style="width: 15rem;">
+		<img class="card-img-top" src="EKG.jpg" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">EKG</h5>
+			<p class="card-text">Historial clinico del paciente</p>
+		</div>
+		<div class="card-footer text-muted"><a href="#" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+	</div>
+
+</div>
+{% endblock %}
