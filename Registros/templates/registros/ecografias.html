@@ -3,16 +3,17 @@
 
 {% block principal %}
 <li class="nav-item">
-  <a class="nav-link" href="{% url 'registros:index'%}">Inicio</a>
+	<a class="nav-link" href="{% url 'registros:index'%}">Inicio</a>
 </li>
 <li class="nav-item active">
-  <a class="nav-link" href="{% url 'registros:buscar'%}">Busqueda de pacientes</a>
+	<a class="nav-link" href="{% url 'registros:buscar'%}">Busqueda de pacientes</a>
 </li>
 {% endblock %}
 
 {%block derecha%}
 </div>
-<div style="color:aliceblue">PACIENTE : {{datos.nombre1}}&nbsp{{datos.nombre2}}&nbsp{{datos.apellPadre}}&nbsp{{datos.apellMadre}}
+<div style="color:aliceblue">PACIENTE :
+	{{datos.nombre1}}&nbsp{{datos.nombre2}}&nbsp{{datos.apellPadre}}&nbsp{{datos.apellMadre}}
 </div>
 {%endblock%}
 
@@ -27,19 +28,25 @@
 {% block content %}
 <div class="card-deck">
 	<div class="card text-white bg-info mb-3" style="width: 14rem;">
-		<img class="card-img-top" src="ecomamas.jpg" alt="Card image cap">
+		<img class="card-img-top" src="" alt="Card image cap">
 		<div class="card-body">
 			<h5 class="card-title">ECOGRAFIA DE MAMAS</h5>
 		</div>
-		<div class="card-footer text-muted"><a href="/registros/ecomama/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+		<div class="card-footer text-muted">
+			<a href="/registros/ecoginecologia/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">NUEVO</a>
+			<a href="/registros/ecomama/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">LISTAR</a>
+		</div>
 	</div>
 
 	<div class="card text-white bg-success mb-3" style="width: 14rem;">
-		<img class="card-img-top" src="ecoabdomen.jpg" alt="Card image cap">
+		<img class="card-img-top" src="" alt="Card image cap">
 		<div class="card-body">
 			<h5 class="card-title">ECOGRAFIA ABDOMINAL</h5>
 		</div>
-		<div class="card-footer text-muted"><a href="/registros/ecoabdomen/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+		<div class="card-footer text-muted">
+			<a href="/registros/ecoginecologia/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">NUEVO</a>
+			<a href="/registros/ecomama/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">LISTAR</a>
+		</div>
 	</div>
 
 	<div class="card text-white bg-danger mb-3" style="width: 14rem;">
@@ -47,7 +54,10 @@
 		<div class="card-body">
 			<h5 class="card-title">ECOGRAFIA OBSTETRICO</h5>
 		</div>
-		<div class="card-footer text-muted"><a href="/registros/ecoobstetrico/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+		<div class="card-footer text-muted">
+			<a href="/registros/ecoginecologia/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">NUEVO</a>
+			<a href="/registros/ecomama/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">LISTAR</a>
+		</div>
 	</div>
 
 	<div class="card text-white bg-info mb-3" style="width: 15rem;">
@@ -55,7 +65,10 @@
 		<div class="card-body">
 			<h5 class="card-title">ECOGRAFIA RENAL</h5>
 		</div>
-		<div class="card-footer text-muted"><a href="/registros/ecorenal/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+		<div class="card-footer text-muted">
+			<a href="/registros/ecoginecologia/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">NUEVO</a>
+			<a href="/registros/ecomama/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">LISTAR</a>
+		</div>
 	</div>
 
 	<div class="card text-white bg-warning mb-3" style="width: 15rem;">
@@ -63,14 +76,20 @@
 		<div class="card-body">
 			<h5 class="card-title">ECOGRAFIA GINECOLOGICO</h5>
 		</div>
-		<div class="card-footer text-muted"><a href="/registros/ecoginecologia/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+		<div class="card-footer text-muted">
+			<a href="/registros/ecoginecologia/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">NUEVO</a>
+			<a href="/registros/ecomama/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">LISTAR</a>
+		</div>
 	</div>
 	<div class="card text-white bg-dark  mb-3" style="width: 15rem;">
 		<img class="card-img-top" src="ecotesticular.jpg" alt="Card image cap">
 		<div class="card-body">
 			<h5 class="card-title">ECOGRAFIA TESTICULAR</h5>
 		</div>
-		<div class="card-footer text-muted"><a href="/registros/ecotesticular/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">ENTRAR</a></div>
+		<div class="card-footer text-muted">
+			<a href="/registros/ecoginecologia/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">NUEVO</a>
+			<a href="/registros/ecomama/{{datos.pk}}" class="btn btn-primary btn-lg btn-block">LISTAR</a>
+		</div>
 	</div>
 </div>
 {% endblock %}
