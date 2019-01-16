@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %}{% endblock %}
+{% block title %}{{extrainfo.title}}{% endblock %}
 
 {% block principal %}
 <li class="nav-item">
@@ -24,7 +24,7 @@
 <li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
 <li class="breadcrumb-item"><a href="{% url 'registros:paciente' ident=paciente.pk %}">Paciente</a></li>
 <li class="breadcrumb-item"><a href="{% url 'registros:ecografia' ident=paciente.pk %}">Ecografias</a></li>
-{% block tipoeco %}{% endblock %}
+<li class="breadcrumb-item active" aria-current="page">{{extrainfo.page}}</li>
 
 {% endblock %}
 
