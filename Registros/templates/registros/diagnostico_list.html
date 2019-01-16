@@ -1,12 +1,51 @@
-{%extends "registros/inicio.html"%}
-{%block contenido%}
-{%if object_list %}
-	<ul>
-		{% for pacienter in object_list  %}
-		<li><a href="#">{{pacienter.paciente}}</a></li>
-		{%endfor%}
-	</ul>
-{%else%}
-	<h3>Usted no puede verlo</h3>
-{%endif%}
+{%extends "registros/base_listar.html"%}
+
+{% block tipoeco %}
+<li class="breadcrumb-item active" aria-current="page">Lista de diagnosticos</li>
+{% endblock %}
+
+{%block content%}
+<table id="dtDynamicVerticalScrollExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+		<thead>
+		  <tr>
+			<th class="th-sm">Fecha Diagnostico
+			  <i class="fa fa-sort float-right" aria-hidden="true"></i>
+			</th>
+			<th class="th-sm">Evolucion
+				<i class="fa fa-sort float-right" aria-hidden="true"></i>
+			</th>
+			<th class="th-sm">Motivo
+				<i class="fa fa-sort float-right" aria-hidden="true"></i>
+			</th>
+			<th class="th-sm">Exmenes
+				<i class="fa fa-sort float-right" aria-hidden="true"></i>
+			</th>
+			<th class="th-sm">Actualizar
+				<i class="fa fa-sort float-right" aria-hidden="true"></i>
+			</th>
+		  </tr>
+		</thead>
+	  
+		<tbody>
+			{% for diagnosticos in paciente.diagnostico_set.all %}
+			<tr>
+				<td>{{diagnosticos.fechaDiagnostico}}</td>
+				<td>{{diagnosticos.motivo}}</td>
+				<td>{{diagnosticos.evolucion}}</td>
+				<td>{{diagnosticos.exmenes}}</td>
+				<td><a class="btn btn-primary" href="#">Actualizar</a></td>
+			</tr>
+			{%endfor%}
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th>Fecha Diagnostico</th>
+				<th>Evolucion</th>
+				<th>Motivo</th>
+				<th>Exmenes</th>	
+				<th>Actualizar</th>
+			</tr>
+		</tfoot>
+	  </table>
 {%endblock%}

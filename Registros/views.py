@@ -141,7 +141,7 @@ class EcotesticularCreate(CreateView):
 
 class ListDiagnostico(DetailView):
     model = Paciente
-    template_name='registros/detail.html'
+    template_name='registros/diagnostico_list.html'
     def get_context_data(self,**kwargs):
         context = super(ListDiagnostico, self).get_context_data(**kwargs) 
         print(context)
