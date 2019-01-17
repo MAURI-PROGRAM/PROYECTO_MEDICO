@@ -90,6 +90,9 @@ class EcomamaCreate(CreateView):
     fields='__all__'
     template_name='registros/base_ecografias_form.html'
     context_object_name='datos'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
@@ -100,6 +103,9 @@ class EcoabdomenCreate(CreateView):
     model=analisisAbdominal
     fields='__all__'
     template_name='registros/base_ecografias_form.html'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
@@ -110,6 +116,9 @@ class EcoobstetricoCreate(CreateView):
     model=analisisObstetrico
     fields='__all__'
     template_name='registros/base_ecografias_form.html'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
@@ -120,6 +129,9 @@ class EcorenalCreate(CreateView):
     model=ecografiaRenal
     fields='__all__'
     template_name='registros/base_ecografias_form.html'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
@@ -130,6 +142,9 @@ class EcoginecologiaCreate(CreateView):
     model=ecografiaginecologico
     fields='__all__'
     template_name='registros/base_ecografias_form.html'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
@@ -140,23 +155,90 @@ class EcotesticularCreate(CreateView):
     model=ecografiatesticular
     fields='__all__'
     template_name='registros/base_ecografias_form.html'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
         extrainfo={'title':'Ecografia Testicular','page':'Ecografia Testicular'}
         return get_context_data_pri(self,EcotesticularCreate,extrainfo, **kwargs)
 
-
-
+################################################
+############# LISTAR DIAGNOSTICOS# #############
+################################################
 
 class ListDiagnostico(DetailView):
     model = Paciente
     template_name='registros/diagnostico_list.html'
-    def get_context_data(self,**kwargs):
-        context = super(ListDiagnostico, self).get_context_data(**kwargs) 
+
+################################################
+#############  LISTAR ECOGRAFIAS   #############
+################################################
+
+class Listecoabdomen(DetailView):
+    template_name='registros/listar_ecos/listar_ecoabdomen.html'
+    model = Paciente
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = analisisAbdominal.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
+        print(context)
+        return context
+    
+
+class Listecoginecologo(DetailView):
+    model = Paciente
+    template_name='registros/listar_ecos/listar_ecoginecologia.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = ecografiaginecologico.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
         print(context)
         return context
 
+class Listecomamas(DetailView):
+    model = Paciente
+    template_name='registros/listar_ecos/listar_ecomamas.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = analisisMamas.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
+        print(context)
+        return context
 
+class Listecoobstetrico(DetailView):
+    model = Paciente
+    template_name='registros/listar_ecos/listar_ecoobstetrico.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = analisisObstetrico.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
+        print(context)
+        return context
 
+class Listecorenal(DetailView):
+    model = Paciente
+    template_name='registros/listar_ecos/listar_ecorenal.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = ecografiaRenal.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
+        print(context)
+        return context
 
+class Listecotesticular(DetailView):
+    model = Paciente
+    template_name='registros/listar_ecos/listar_ecotesticular.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = ecografiatesticular.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
+        print(context)
+        return context

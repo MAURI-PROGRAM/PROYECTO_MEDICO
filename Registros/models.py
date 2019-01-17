@@ -85,8 +85,6 @@ class analisisMamas(models.Model):
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
 	def get_absolute_url(self):
 		return reverse('registros:ecografia')
-	def __str__(self):
-		return str(self.paciente)+' '+str(self.fech_analisismamas)
 
 class analisisAbdominal(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
@@ -220,9 +218,6 @@ class ecografiaginecologico(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('registros:ecografia')
-
-	def __str__(self):
-		return str(self.paciente)+' '+str(self.fech_informe)
 
 class ecografiatesticular(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')

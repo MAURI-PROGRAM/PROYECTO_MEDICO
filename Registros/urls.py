@@ -21,6 +21,13 @@ urlpatterns = [
 	path('ecoginecologia/<ident>', views.EcoginecologiaCreate.as_view(),name='ecoginecologia'),
 	path('ecotesticular/<ident>', views.EcotesticularCreate.as_view(),name='ecotesticular'),
 
+	path('ecomama/listar/<pk>', views.Listecomamas.as_view(),name='listar_ecomama'),
+	path('ecoabdomen/listar/<pk>', views.Listecoabdomen.as_view(),name='listar_ecoabdomen'),
+	path('ecoobstetrico/listar/<pk>', views.Listecoobstetrico.as_view(),name='listar_ecoobstetrico'),
+	path('ecorenal/listar/<pk>', views.Listecorenal.as_view(),name='listar_ecorenal'),
+	path('ecoginecologia/listar/<pk>', views.Listecoginecologo.as_view(),name='listar_ecoginecologia'),
+	path('ecotesticular/listar/<pk>', views.Listecotesticular.as_view(),name='listar_ecotesticular'),
+
 	path('paciente/listar_diagnostico/<pk>', views.ListDiagnostico.as_view(),name='lista_diagnostico'),
 
 ]

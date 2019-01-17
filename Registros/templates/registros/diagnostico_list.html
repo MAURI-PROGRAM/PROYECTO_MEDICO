@@ -1,5 +1,7 @@
 {%extends "registros/base_listar.html"%}
 
+{% block title %}Lista de diagnosticos{% endblock %}
+
 {% block tipoeco %}
 <li class="breadcrumb-item active" aria-current="page">Lista de diagnosticos</li>
 {% endblock %}
@@ -23,6 +25,9 @@
 			<th class="th-sm">Actualizar
 				<i class="fa fa-sort float-right" aria-hidden="true"></i>
 			</th>
+			<th class="th-sm">Visualizar
+					<i class="fa fa-sort float-right" aria-hidden="true"></i>
+				</th>
 		  </tr>
 		</thead>
 	  
@@ -34,6 +39,7 @@
 				<td>{{diagnosticos.evolucion}}</td>
 				<td>{{diagnosticos.exmenes}}</td>
 				<td><a class="btn btn-primary" href="#">Actualizar</a></td>
+				<td><a class="btn btn-danger" href="#">PDF</a></td>
 			</tr>
 			{%endfor%}
 		</tbody>
@@ -45,6 +51,7 @@
 				<th>Motivo</th>
 				<th>Exmenes</th>	
 				<th>Actualizar</th>
+				<th>Visualizar</th>
 			</tr>
 		</tfoot>
 	  </table>

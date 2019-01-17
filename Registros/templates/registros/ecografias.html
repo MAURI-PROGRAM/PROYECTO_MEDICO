@@ -39,7 +39,7 @@
 				</div>
 				<div class="card-footer text-muted bg-light btn btn-justify">
 					<a href="{% url 'registros:ecoabdomen' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-					<a href="#" class="btn btn-outline-info">LISTAR</a>
+					<a href="{% url 'registros:listar_ecoabdomen'  pk=datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 				</div>
 			</div>
 		
@@ -52,7 +52,7 @@
 				</div>
 				<div class="card-footer text-muted bg-light btn btn-justify">
 					<a href="{% url 'registros:ecorenal' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-					<a href="#" class="btn btn-outline-info">LISTAR</a>
+					<a href="{% url 'registros:listar_ecorenal'  pk=datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 				</div>
 			</div>
 	{%if datos.sexo in 'F' %}
@@ -63,7 +63,7 @@
 		</div>
 		<div class="card-footer text-muted bg-light btn btn-justify">
 			<a href="{% url 'registros:ecomama'  ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-			<a href="#" class="btn btn-outline-info">LISTAR</a>
+			<a href="{% url 'registros:listar_ecomama'  pk=datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>
 
@@ -74,7 +74,7 @@
 			</div>
 			<div class="card-footer text-muted bg-light btn btn-justify">
 				<a href="{% url 'registros:ecoobstetrico' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-				<a href="#" class="btn btn-outline-info">LISTAR</a>
+				<a href="{% url 'registros:listar_ecoobstetrico'  pk=datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 			</div>
 		</div>
 		<div class="card text-white bg-primary border border-dark ml-2 mr-4">
@@ -84,7 +84,7 @@
 				</div>
 				<div class="card-footer text-muted bg-light btn btn-justify">
 					<a href="{% url 'registros:ecoginecologia' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-					<a href="#" class="btn btn-outline-info">LISTAR</a>
+					<a href="{% url 'registros:listar_ecoginecologia'  pk=datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 				</div>
 			</div>
 	{%endif%}
@@ -98,7 +98,7 @@
 			</div>
 			<div class="card-footer text-muted bg-light btn btn-justify">
 				<a href="{% url 'registros:ecotesticular' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-				<a href="#" class="btn btn-outline-info">LISTAR</a>
+				<a href="{% url 'registros:listar_ecotesticular'  pk=datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 			</div>
 		</div>
 	{%endif%}

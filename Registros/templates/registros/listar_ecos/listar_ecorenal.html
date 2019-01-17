@@ -1,0 +1,45 @@
+{%extends "registros/base_listar.html"%}
+
+{% block title %}Lista Ecografias Renal{% endblock %}
+
+{% block tipoeco %}
+<li class="breadcrumb-item"><a href="{% url 'registros:ecografia' ident=paciente.pk %}">Ecografias</a></li>
+<li class="breadcrumb-item active" aria-current="page">Listar Ecografia Renal</li>
+{% endblock %}
+
+{% block content %}
+<table id="dtDynamicVerticalScrollExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th class="th-sm">Fecha Ecografia
+          <i class="fa fa-sort float-right" aria-hidden="true"></i>
+        </th>
+        <th class="th-sm">Actualizar
+            <i class="fa fa-sort float-right" aria-hidden="true"></i>
+        </th>
+        <th class="th-sm">Visualizar
+                <i class="fa fa-sort float-right" aria-hidden="true"></i>
+            </th>
+      </tr>
+      </tr>
+    </thead>
+  
+    <tbody>
+        {% for list in analisis %}
+        <tr>
+            <td>{{list.fech_informe}}</td>
+            <td><a class="btn btn-primary" href="#">Actualizar</a></td>
+            <td><a class="btn btn-danger" href="#">PDF</a></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <th>Fecha Ecografia</th>
+            <th>Actualizar</th>
+            <th>Visualizar</th>
+        </tr>
+    </tfoot>
+  </table>
+{% endblock %}
