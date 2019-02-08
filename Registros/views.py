@@ -7,11 +7,64 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.urls import reverse
-from .models import Paciente,Diagnostico,analisisMamas,analisisAbdominal,analisisObstetrico,ecografiaRenal,ecografiaginecologico,ecografiatesticular
+from .models import Paciente,Diagnostico,analisisMamas,analisisAbdominal,analisisObstetrico,ecografiaRenal,ecografiaginecologico,ecografiatesticular,farmacoterapia
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.core import serializers
 from django.http import HttpResponse
+from extra_views import CreateWithInlinesView,InlineFormSetFactory
+#############################################
+############ crear nuevo diagnostico#########
+#############################################
+
+
+def get_initial_pri(self, **kwargs):
+    parametro = self.kwargs.get('ident',None)
+    paciente = Paciente.objects.get(pk=parametro)
+    return {'paciente':paciente,}
+
+def get_context_data_pri(self, nomclass,extra,**kwargs):
+    parametro = self.kwargs.get('ident',None)
+    paciente = Paciente.objects.get(pk=parametro)
+    context = super(nomclass, self).get_context_data(**kwargs) 
+    context['paciente']= paciente
+    context['extrainfo'] = extra
+    print(context)
+    return context
+
+
+
+class ItemInline(InlineFormSetFactory):
+    model = farmacoterapia
+    fields = ['farmaco', 'adminitracion', 'comentario']
+    factory_kwargs = {'extra':7, 'max_num': None,
+                      'can_order': False, 'can_delete': True}
+    formset_kwargs = {'auto_id': 'my_id_%s','save_as_new': True}
+
+class CreateOrderView(CreateWithInlinesView):
+    model = Diagnostico
+    inlines = [ItemInline]
+    fields = ['paciente', 'precion_arterial', 'temperatura','peso','evolucion','pulso','saturacion_oxigeno','talla','idx','exmenes','motivo']
+    template_name = 'registros/nuevo_diagnostico.html'
+    inlines_names = ['Items', 'Tags']
+
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return '/registros/paciente/listar_diagnostico/{0}'.format(parametro)
+    def get_initial(self, **kwargs):
+        parametro = self.kwargs.get('ident',None)
+        paciente = Paciente.objects.get(pk=parametro)
+        return {'paciente':paciente,}
+    def get_context_data(self, **kwargs):
+        parametro = self.kwargs.get('ident',None)
+        paciente = Paciente.objects.get(pk=parametro)
+        context = super(CreateOrderView, self).get_context_data(**kwargs)
+        extra={'title':'Diagnosticos','page':'Nuevo Diagnostico'}
+        context['paciente']= paciente
+        context['extrainfo'] = extra
+        print(context)
+        return context
+
 
 #############################################
 ############# VISTA PRINCIPAL   #############

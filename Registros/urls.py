@@ -29,5 +29,6 @@ urlpatterns = [
 	path('ecotesticular/listar/<pk>', views.Listecotesticular.as_view(),name='listar_ecotesticular'),
 
 	path('paciente/listar_diagnostico/<pk>', views.ListDiagnostico.as_view(),name='lista_diagnostico'),
+	path('paciente/nuevodiagnostico/<ident>', views.CreateOrderView.as_view(),name='nuevo_diagnostico'),
 
 ]

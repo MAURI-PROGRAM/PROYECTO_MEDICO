@@ -1,0 +1,51 @@
+{% extends 'registros/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}{{extrainfo.title}}{% endblock %}
+
+{% block principal %}
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'registros:index'%}">Inicio</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'registros:buscar'%}">Busqueda de pacientes</a>
+</li>
+{% endblock %}
+
+{%block derecha%}
+</div>
+<div style="color:aliceblue">PACIENTE : {{paciente.nombre1}}&nbsp{{paciente.nombre2}}&nbsp{{paciente.apellPadre}}&nbsp{{paciente.apellMadre}}
+</div>
+{%endblock%}
+
+{% block lista %}
+<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:paciente' ident=paciente.pk %}">Paciente</a></li>
+<li class="breadcrumb-item active" aria-current="page">{{extrainfo.page}}</li>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <form method="post">
+            {% csrf_token %}
+            <h1>1.- EVOLUCION </h1>
+            {{ form|crispy }}
+            <h1>2.- PRESCRIPCION </h1>
+        </br>
+            {% for formset in inlines %}
+                {{ formset|crispy}}
+                </br>
+                </br>
+            {% endfor %}
+            {{ Tags }}
+            {{ Items }}
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
+  {% endblock %}
