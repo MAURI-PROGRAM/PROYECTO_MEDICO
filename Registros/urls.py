@@ -20,6 +20,10 @@ urlpatterns = [
 	path('ecorenal/<ident>', views.EcorenalCreate.as_view(),name='ecorenal'),
 	path('ecoginecologia/<ident>', views.EcoginecologiaCreate.as_view(),name='ecoginecologia'),
 	path('ecotesticular/<ident>', views.EcotesticularCreate.as_view(),name='ecotesticular'),
+	path('ekg/<ident>', views.EkgCreate.as_view(),name='ekg'),
+	path('terapias/<ident>', views.TerapiaCreate.as_view(),name='terapias'),
+	path('rayosx/<ident>', views.RayosxCreate.as_view(),name='rayosx'),
+	path('desintometria/<ident>', views.DesintometriaCreate.as_view(),name='desintometria'),
 
 	path('ecomama/listar/<pk>', views.Listecomamas.as_view(),name='listar_ecomama'),
 	path('ecoabdomen/listar/<pk>', views.Listecoabdomen.as_view(),name='listar_ecoabdomen'),

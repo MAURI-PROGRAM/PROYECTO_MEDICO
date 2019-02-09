@@ -263,3 +263,32 @@ class ecografiaprostata(models.Model):
 
 	def __str__(self):
 		return str(self.paciente)+' '+str(self.fech_informe)
+
+
+class desintometria(models.Model):
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
+	encabezado = models.CharField(max_length=50,verbose_name='Encabezado')
+	observaciones = models.CharField(max_length=10000,verbose_name='Observaciones')
+	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='')
+
+class rayosx(models.Model):
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
+	encabezado = models.CharField(max_length=50,verbose_name='Encabezado')
+	observaciones = models.CharField(max_length=10000,verbose_name='Observaciones')
+	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='')
+
+class terapias(models.Model):
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
+	encabezado = models.CharField(max_length=50,verbose_name='Encabezado')
+	observaciones = models.CharField(max_length=10000,verbose_name='Observaciones')
+	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='')
+
+class ekg(models.Model):
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
+	encabezado = models.CharField(max_length=50,verbose_name='Encabezado')
+	observaciones = models.CharField(max_length=10000,verbose_name='Observaciones')
+	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='')
+	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='')

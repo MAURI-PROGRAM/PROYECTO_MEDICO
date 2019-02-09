@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.urls import reverse
-from .models import Paciente,Diagnostico,analisisMamas,analisisAbdominal,analisisObstetrico,ecografiaRenal,ecografiaginecologico,ecografiatesticular,farmacoterapia
+from .models import Paciente,Diagnostico,analisisMamas,analisisAbdominal,analisisObstetrico,ecografiaRenal,ecografiaginecologico,ecografiatesticular,farmacoterapia,ekg,terapias,rayosx,desintometria
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.core import serializers
@@ -216,6 +216,64 @@ class EcotesticularCreate(CreateView):
     def get_context_data(self, **kwargs):
         extrainfo={'title':'Ecografia Testicular','page':'Ecografia Testicular'}
         return get_context_data_pri(self,EcotesticularCreate,extrainfo, **kwargs)
+
+
+############################################################
+##################   OTROS FORMULARIOS #####################
+############################################################
+
+class DesintometriaCreate(CreateView):
+    model = desintometria
+    fields='__all__'
+    template_name='registros/base_ecografias_form.html'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
+    def get_initial(self, **kwargs):
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        extrainfo={'title':'Desintometria','page':'Desintometria'}
+        return get_context_data_pri(self,DesintometriaCreate,extrainfo, **kwargs)
+
+class TerapiaCreate(CreateView):
+    model = terapias
+    fields='__all__'
+    template_name='registros/base_ecografias_form.html'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
+    def get_initial(self, **kwargs):
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        extrainfo={'title':'Terapias','page':'Terapias'}
+        return get_context_data_pri(self,TerapiaCreate,extrainfo, **kwargs)
+
+class EkgCreate(CreateView):
+    model = ekg
+    fields='__all__'
+    template_name='registros/base_ecografias_form.html'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
+    def get_initial(self, **kwargs):
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        extrainfo={'title':'Ekg','page':'Ekg'}
+        return get_context_data_pri(self,EkgCreate,extrainfo, **kwargs)
+
+
+class RayosxCreate(CreateView):
+    model = rayosx
+    fields='__all__'
+    template_name='registros/base_ecografias_form.html'
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
+    def get_initial(self, **kwargs):
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        extrainfo={'title':'Rayos X','page':'Rayos X'}
+        return get_context_data_pri(self,RayosxCreate,extrainfo, **kwargs)
 
 ################################################
 ############# LISTAR DIAGNOSTICOS# #############
