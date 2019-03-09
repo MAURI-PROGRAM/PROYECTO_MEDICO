@@ -44,7 +44,7 @@ class ItemInline(InlineFormSetFactory):
 class CreateOrderView(CreateWithInlinesView):
     model = Diagnostico
     inlines = [ItemInline]
-    fields = ['paciente', 'precion_arterial', 'temperatura','peso','evolucion','pulso','saturacion_oxigeno','talla','idx','exmenes','motivo']
+    fields = ['paciente', 'precion_arterial', 'temperatura','peso','evolucion','pulso','saturacion_oxigeno','talla','idx','exmenes','motivo','encargado']
     template_name = 'registros/nuevo_diagnostico.html'
     inlines_names = ['Items', 'Tags']
 

@@ -54,6 +54,7 @@ class Diagnostico(models.Model):
 	motivo=models.CharField(max_length=300,verbose_name='MOTIVO')
 	fechaDiagnostico=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE DIAGNOSTICO')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO')
 
 class farmacoterapia(models.Model):
 	diagnostico= models.ForeignKey(Diagnostico, on_delete=models.CASCADE,verbose_name='Diagnostico')
@@ -83,6 +84,7 @@ class analisisMamas(models.Model):
 	presuncion=models.CharField(max_length=800,verbose_name='PRESIÓN DIAGNÓSTICA')
 	fech_analisismamas=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE ADMISION')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 	def get_absolute_url(self):
 		return reverse('registros:ecografia')
 
@@ -111,6 +113,7 @@ class analisisAbdominal(models.Model):
 	presuncion_diagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
 	fech_analisisabdomen=models.DateTimeField(auto_now_add=True,verbose_name='FECHA DE ADMISION')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 
 	def get_absolute_url(self):
 		return reverse('registros:ecografia')
@@ -144,6 +147,7 @@ class analisisObstetrico(models.Model):
 	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA:El estudio Ultrasonografico es compatible con:')
 	fech_analisisobstetrico=models.DateTimeField(auto_now_add=True,verbose_name='FECHA ANALISIS OBSTETRICO')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 	
 	def get_absolute_url(self):
 		return reverse('registros:ecografia')
@@ -187,6 +191,7 @@ class ecografiaRenal(models.Model):
 	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO RENAL')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 
 	def get_absolute_url(self):
 		return reverse('registros:ecografia')
@@ -215,6 +220,7 @@ class ecografiaginecologico(models.Model):
 	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO GINECOLOGICO')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 
 	def get_absolute_url(self):
 		return reverse('registros:ecografia')
@@ -232,6 +238,7 @@ class ecografiatesticular(models.Model):
 	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO TESTICULAR')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 
 	def get_absolute_url(self):
 		return reverse('registros:ecografia')
@@ -257,6 +264,7 @@ class ecografiaprostata(models.Model):
 	presuncionDiagnostico=models.CharField(max_length=500,verbose_name='PRESUNCION_DIAGNOSTICA')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='FECHA INFORME ECOGRAFICO PROSTATA')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='FECHA DE ACTUALIZACION')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 
 	def get_absolute_url(self):
 		return reverse('registros:ecografia')
@@ -271,6 +279,7 @@ class desintometria(models.Model):
 	observaciones = models.CharField(max_length=10000,verbose_name='Observaciones')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 
 class rayosx(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
@@ -278,6 +287,7 @@ class rayosx(models.Model):
 	observaciones = models.CharField(max_length=10000,verbose_name='Observaciones')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 
 class terapias(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
@@ -285,6 +295,7 @@ class terapias(models.Model):
 	observaciones = models.CharField(max_length=10000,verbose_name='Observaciones')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
 
 class ekg(models.Model):
 	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE,verbose_name='PACIENTE')
@@ -292,3 +303,4 @@ class ekg(models.Model):
 	observaciones = models.CharField(max_length=10000,verbose_name='Observaciones')
 	fech_informe=models.DateTimeField(auto_now_add=True,verbose_name='')
 	fech_actualizado=models.DateTimeField(auto_now=True,verbose_name='')
+	encargado = models.CharField(max_length=30,verbose_name='ENCARGADO',blank=True,null=True)
