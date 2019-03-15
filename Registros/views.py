@@ -1,7 +1,7 @@
 from django.views import generic
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 import datetime
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView,View
 from django.views import View
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
@@ -13,6 +13,26 @@ from django.views.generic import TemplateView
 from django.core import serializers
 from django.http import HttpResponse
 from extra_views import CreateWithInlinesView,InlineFormSetFactory
+
+from Clinica_Website.utileria import render_pdf
+#############################################
+############ crear pdf              #########
+#############################################
+class PDFPrueba(View):
+    """
+    REGRESA PDF basando en template
+    """
+    def get(self,request,*args,**kwargs):
+        datos = {
+            "nombre" : "Michael",
+            "apellidos" : "Merchan"
+        }
+        pdf = render_pdf("registros/mi_pdf.html",{"datos":datos})
+        
+        return HttpResponse(pdf,content_type="application/pdf")
+
+
+
 #############################################
 ############ crear nuevo diagnostico#########
 #############################################

@@ -5,6 +5,7 @@ app_name='registros'
 
 urlpatterns = [
 	path('', views.IndexView.as_view(),name='index'),
+	path('pdf/',views.PDFPrueba.as_view(),name='pdf'),
 
 	path('buscar/',views.BusquedaView.as_view(),name='buscar'),
 	path('buscar_ajax/',views.BusquedaAjaxView.as_view(),name='buscarajax'),
