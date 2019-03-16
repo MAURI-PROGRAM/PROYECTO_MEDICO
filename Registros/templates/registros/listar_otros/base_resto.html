@@ -23,9 +23,9 @@
 <li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
 <li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
 <li class="breadcrumb-item"><a href="{% url 'registros:paciente' ident=paciente.pk %}">Paciente</a></li>
-{% if  extrainfo.verif %}
+
 <li class="breadcrumb-item"><a href="{% url 'registros:ecografia' ident=paciente.pk %}">Ecografias</a></li>
-{% endif %}
+
 
 <li class="breadcrumb-item active" aria-current="page">{{extrainfo.page}}</li>
 

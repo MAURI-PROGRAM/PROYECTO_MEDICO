@@ -80,13 +80,15 @@
       type: 'get',
       success: function (data) {
         var html = '';
+        
         for (var i = 0; i < data.length; i++) {
           html += '<tr>'
           html += "<td>" + data[i].fields.cedula + "</td>";
           html += "<td>" + data[i].fields.nombre1 + "</td>";
           html += "<td>" + data[i].fields.apellPadre + "</td>";
           html += "<td>" + data[i].fields.fech_actualizado + "</td>";
-          html += '<td><a class="btn btn-primary" href="/registros/paciente/' + data[i].pk + '">Ingresar</a></td>'
+          html += '<td><a class="btn btn-primary" href="/paciente/' + data[i].pk + '">Ingresar</a></td>'
+          html += '</tr>'
           html += '</tr>'
           console.log(data[i]);
         }

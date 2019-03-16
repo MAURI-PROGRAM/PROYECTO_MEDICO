@@ -38,8 +38,9 @@
 			<p class="card-text">Historial clinico del paciente</p>
 		</div>
 		<div class="card-footer text-muted bg-light">
-			<a href="/registros/paciente/nuevodiagnostico/{{datos.pk}}" class="btn btn-outline-success">NUEVO</a>
-			<a href="/registros/paciente/listar_diagnostico/{{datos.pk}}" class="btn btn-outline-info">LISTAR</a>
+				
+			<a href="{% url 'registros:nuevo_diagnostico' datos.pk%}" class="btn btn-outline-success">NUEVO</a>
+			<a href="{% url 'registros:lista_diagnostico' datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>
 
@@ -50,7 +51,8 @@
 			<p class="card-text">Informacion de las distintas ecografias</p>
 		</div>
 		<div class="card-footer text-muted bg-light">
-			<a href="/registros/ecografia/{{datos.pk}}" class="btn btn-outline-success">ELEGIR ECOGRAFIA</a>
+
+			<a href="{% url 'registros:ecografia' ident=datos.pk%}" class="btn btn-outline-success">ELEGIR ECOGRAFIA</a>
 		</div>
 	</div>
 
@@ -61,7 +63,7 @@
 			<p class="card-text">Historial clinico del paciente</p>
 		</div>
 		<div class="card-footer text-muted bg-light">
-			<a href="/registros/rayosx/{{datos.pk}}" class="btn btn-outline-success">NUEVO</a>
+			<a href="{% url 'registros:rayosx' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
 			<a href="#" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>
@@ -73,7 +75,7 @@
 			<p class="card-text">Historial clinico del paciente</p>
 		</div>
 		<div class="card-footer text-muted bg-light">
-			<a href="/registros/desintometria/{{datos.pk}}" class="btn btn-outline-success">NUEVO</a>
+			<a href="{% url 'registros:desintometria' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
 			<a href="#" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>
@@ -85,7 +87,7 @@
 			<p class="card-text">Historial clinico del paciente</p>
 		</div>
 		<div class="card-footer text-muted bg-light">
-			<a href="/registros/terapias/{{datos.pk}}" class="btn btn-outline-success">NUEVO</a>
+			<a href="{% url 'registros:terapias' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
 			<a href="#" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>
@@ -96,7 +98,7 @@
 			<p class="card-text">Historial clinico del paciente</p>
 		</div>
 		<div class="card-footer text-muted bg-light">
-			<a href="/registros/ekg/{{datos.pk}}" class="btn btn-outline-success">NUEVO</a>
+			<a href="{% url 'registros:ekg' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
 			<a href="#" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>

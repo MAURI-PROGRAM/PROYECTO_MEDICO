@@ -70,7 +70,7 @@ class CreateOrderView(CreateWithInlinesView):
 
     def get_success_url(self):
         parametro = self.kwargs.get('ident',None)
-        return '/registros/paciente/listar_diagnostico/{0}'.format(parametro)
+        return '/paciente/listar_diagnostico/{0}'.format(parametro)
     def get_initial(self, **kwargs):
         parametro = self.kwargs.get('ident',None)
         paciente = Paciente.objects.get(pk=parametro)
@@ -120,7 +120,7 @@ class Crear_paciente(CreateView):
     model = Paciente
     fields='__all__'
     template_name='registros/paciente_form.html'
-    success_url = '/registros/buscar'
+    success_url = '/buscar'
     success_message = 'Paciente creado correctamente'
 
 
@@ -169,7 +169,7 @@ class EcomamaCreate(CreateView):
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
-        extrainfo={'title':'Ecografia Mamas','page':'Ecografia Mamas'}
+        extrainfo={'title':'Ecografia Mamas','page':'Ecografia Mamas','verif':'true'}
         return get_context_data_pri(self,EcomamaCreate,extrainfo, **kwargs)
 
 class EcoabdomenCreate(CreateView):
@@ -182,7 +182,7 @@ class EcoabdomenCreate(CreateView):
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
-        extrainfo={'title':'Ecografia abdominal','page':'Ecografia abdominal'}
+        extrainfo={'title':'Ecografia abdominal','page':'Ecografia abdominal','verif':'true'}
         return get_context_data_pri(self,EcoabdomenCreate,extrainfo, **kwargs)
 
 class EcoobstetricoCreate(CreateView):
@@ -195,7 +195,7 @@ class EcoobstetricoCreate(CreateView):
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
-        extrainfo={'title':'Ecografia Obstetrico','page':'Ecografia Obstetrico'}
+        extrainfo={'title':'Ecografia Obstetrico','page':'Ecografia Obstetrico','verif':'true'}
         return get_context_data_pri(self,EcoobstetricoCreate,extrainfo, **kwargs)
 
 class EcorenalCreate(CreateView):
@@ -208,7 +208,7 @@ class EcorenalCreate(CreateView):
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
-        extrainfo={'title':'Ecografia Renal','page':'Ecografia Renal'}
+        extrainfo={'title':'Ecografia Renal','page':'Ecografia Renal','verif':'true'}
         return get_context_data_pri(self,EcorenalCreate,extrainfo, **kwargs)
 
 class EcoginecologiaCreate(CreateView):
@@ -221,7 +221,7 @@ class EcoginecologiaCreate(CreateView):
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
-        extrainfo={'title':'Ecografia Ginecologia','page':'Ecografia Ginecologia'}
+        extrainfo={'title':'Ecografia Ginecologia','page':'Ecografia Ginecologia','verif':'true'}
         return get_context_data_pri(self,EcoginecologiaCreate,extrainfo, **kwargs)
 
 class EcotesticularCreate(CreateView):
@@ -234,7 +234,7 @@ class EcotesticularCreate(CreateView):
     def get_initial(self, **kwargs):
         return get_initial_pri(self, **kwargs)
     def get_context_data(self, **kwargs):
-        extrainfo={'title':'Ecografia Testicular','page':'Ecografia Testicular'}
+        extrainfo={'title':'Ecografia Testicular','page':'Ecografia Testicular','verif':'true'}
         return get_context_data_pri(self,EcotesticularCreate,extrainfo, **kwargs)
 
 

@@ -20,7 +20,7 @@
 {% block lista %}
 <li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
 <li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
-<li class="breadcrumb-item"><a href="/registros/paciente/{{datos.pk}}">Paciente</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:paciente' ident=datos.pk %}">Paciente</a></li>
 <li class="breadcrumb-item active" aria-current="page">Ecografias</li>
 {% endblock %}
 
