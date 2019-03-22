@@ -19,6 +19,5 @@ from django.contrib import admin
 
 urlpatterns = [
     path('', include('Registros.urls'),name='inicio'),
-    path('admin/', admin.site.urls)
-
+    path('admin/', admin.site.urls),
 ]

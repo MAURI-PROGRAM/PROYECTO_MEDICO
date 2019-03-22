@@ -13,11 +13,25 @@ from django.views.generic import TemplateView
 from django.core import serializers
 from django.http import HttpResponse
 from extra_views import CreateWithInlinesView,InlineFormSetFactory
+from dateutil import relativedelta as rdelta
+from datetime import date,datetime
 
 from Clinica_Website.utileria import render_pdf
 #############################################
 ############ crear pdf              #########
 #############################################
+def first_view(request):
+    return HttpResponse('hola')
+
+
+
+
+
+def edad_paciente(d1):
+    d2 = datetime.now()
+    rd = rdelta.relativedelta(d2,d1)
+    return "{0.years} years and {0.months} months".format(rd)
+
 class PDFPrueba(View):
     """
     REGRESA PDF basando en template
@@ -31,7 +45,18 @@ class PDFPrueba(View):
         
         return HttpResponse(pdf,content_type="application/pdf")
 
-
+class info_ecomamas(View):
+    """
+    REGRESA PDF basando en template
+    """
+    def get(self,request,*args,**kwargs):
+        parametro = self.kwargs.get('ident',None)
+        
+        datos = ecografiaRenal.objects.get(id=parametro)
+        extra={'titulo':'pdf_info_renal','clinica':'NOMBRE DE LA CLINICA','informe':'Informe Ecografia Renal','edad':edad_paciente(datos.paciente.fechNacimiento)}
+        pdf = render_pdf("registros/pdf/info_cliente_pdf.html",{"datos":datos,"extra":extra})
+        
+        return HttpResponse(pdf,content_type="application/pdf")
 
 #############################################
 ############ crear nuevo diagnostico#########

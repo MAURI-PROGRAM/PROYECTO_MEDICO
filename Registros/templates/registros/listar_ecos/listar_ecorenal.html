@@ -29,7 +29,7 @@
         <tr>
             <td>{{list.fech_informe}}</td>
             <td><a class="btn btn-primary" href="#">Actualizar</a></td>
-            <td><a class="btn btn-danger" href="#">PDF</a></td>
+            <td><a class="btn btn-danger" target="_blank" href="{% url 'registros:info_ecomamas' ident=list.pk %}">PDF</a></td>
         </tr>
         {%endfor%}
     </tbody>

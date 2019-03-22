@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{extra.titulo}}</title>
+</head>
+<body>
+    <h3>{{extra.clinica}}</h3>
+    <h3 class="text-center">{{extra.informe}}</h3>
+    <p><strong>Paciente : </strong>{{datos.paciente}} <strong>Edad :</strong> {{extra.edad}}</p>
+    <p></p>
+    <p><strong>Fecha :</strong> {{datos.fech_informe}}</p>
+    <p>El estudio ultrasonografico evidencia</p>
+    <h2>1. EL RINON DERECHO</h2>
+    <p><strong>Morfologia y movilidad :</strong> {{datos.movilidad_riñonder}}</p>
+    <p><strong>Ecogenicidad :</strong> {{datos.ecogenicidad_riñonder}}</p>
+    <p><strong>Medidas :</strong> {{datos.medidalongitud_riñonder}} <strong>mm</strong> de longitud {{datos.medidaparenquima_riñonder}} <strong>mm</strong> de parenquima</p>
+    <p><strong>Imagenes expansivas :</strong>  <strong>solidas</strong> : {{datos.imgExpansivas_solidasder}}        <strong>quisticas</strong> : {{datos.imgExpansivas_quisticasder}}</p>
+
+    <p><strong>Hidronefrosis :</strong> {{datos.hidronefrosisder}} <strong>mm</strong> </p>
+    <p><strong>Microlitiasis :</strong> {{datos.microlitiasisder}} <strong>mm</strong> </p>
+    <p><strong>Calculos :</strong> {{datos.calculo_der}} <strong>mm</strong> </p>
+    <p><strong>Descripcion/ Otros :</strong> {{datos.descripcionder}} <strong>mm</strong> </p>
+    <h2>2. EL RINON IZQUIERDO</h2>
+    <p><strong>Morfologia y movilidad :</strong> {{datos.movilidad_riñonizq}}</p>
+    <p><strong>Ecogenicidad :</strong> {{datos.ecogenicidad_riñonizq}}</p>
+    <p><strong>Medidas :</strong> {{datos.medidalongitud_riñonizq}} <strong>mm</strong> de longitud {{datos.medidaparenquima_riñonizq}} <strong>mm</strong> de parenquima</p>
+    <p><strong>Imagenes expansivas :</strong>  <strong>solidas</strong> : {{datos.imgExpansivas_solidasizq}}        <strong>quisticas</strong> : {{datos.imgExpansivas_quisticasizq}}</p>
+
+    <p><strong>Hidronefrosis :</strong> {{datos.hidronefrosisizq}} <strong>mm</strong> </p>
+    <p><strong>Microlitiasis :</strong> {{datos.microlitiasisizq}} <strong>mm</strong> </p>
+    <p><strong>Calculos :</strong> {{datos.calculo_izq}} <strong>mm</strong> </p>
+    <p><strong>Descripcion/ Otros :</strong> {{datos.descripcionizq}} <strong>mm</strong> </p>
+    <h2>3. VEJIGA</h2>
+    <p><strong>Repelecion :</strong> {{datos.replecion}} <strong>mm</strong> </p>
+    <p><strong>Paredes :</strong> {{datos.paredes}} <strong>mm</strong> </p>
+    <p><strong>Contenido Anecocico :</strong> {{datos.contenidoAnecoico}} <strong>mm</strong> </p>
+    <p><strong>Imagenes expansivas:</strong> {{datos.imgExpansivasvegiga}} <strong>mm</strong> </p>
+    <p><strong>Calculos en su interior:</strong> {{datos.calculointerior}} <strong>mm</strong> </p>
+    <p><strong>Vol pre-miccional:</strong> {{datos.volpremicional}} <strong> Vol post-miccional:</strong> {{datos.volpostmiccional}} <strong>cc.</strong> <strong>%retencion</strong>{{datos.retencion}} <strong>cc.</strong></p>
+    <p><strong>Descripcion/ Otros :</strong> {{datos.descripcionveg}} <strong>mm</strong> </p>
+    <h2>4. OBSERVACIONES</h2>
+    <p> {{datos.observaciones}} </p>
+    <h2>4. PRENSUNCION DIAGNOSTICA: El Estudio Ultrasonografico es compatible con:</h2>
+    <p>{{datos.presuncionDiagnostico}}</p>
+    <p>Nota: Este Informe es invalido si no lleva el sello, C.M.P y firma del medico Responsable</p>
+
+</body>
+</html>

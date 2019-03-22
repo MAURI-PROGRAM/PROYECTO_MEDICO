@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 from django.contrib.auth.views import login,logout_then_login
 from django.contrib.auth.decorators import login_required
@@ -7,7 +7,11 @@ app_name='registros'
 urlpatterns = [
 	
 	path('', views.IndexView.as_view(),name='index'),
+
 	path('pdf/',login_required(views.PDFPrueba.as_view()),name='pdf'),
+	path('pdf/ecomamas/<ident>',login_required(views.info_ecomamas.as_view()),name='info_ecomamas'),
+
+
 	path('buscar/',login_required(views.BusquedaView.as_view()),name='buscar'),
 	path('buscar_ajax/',login_required(views.BusquedaAjaxView.as_view()),name='buscarajax'),
 
