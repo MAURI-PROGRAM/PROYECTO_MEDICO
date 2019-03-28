@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.urls import reverse
-from .models import Paciente,Diagnostico,analisisMamas,analisisAbdominal,analisisObstetrico,ecografiaRenal,ecografiaginecologico,ecografiatesticular,farmacoterapia,ekg,terapias,rayosx,desintometria
+from .models import Paciente,Diagnostico,analisisMamas,analisisAbdominal,analisisObstetrico,ecografiaRenal,ecografiaginecologico,ecografiatesticular,farmacoterapia,ekg,terapias,rayosx,desintometria,lab_analisisclinico
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.core import serializers
@@ -16,16 +16,12 @@ from extra_views import CreateWithInlinesView,InlineFormSetFactory
 from dateutil import relativedelta as rdelta
 from datetime import date,datetime
 
+
 from Clinica_Website.utileria import render_pdf
+
 #############################################
 ############ crear pdf              #########
 #############################################
-def first_view(request):
-    return HttpResponse('hola')
-
-
-
-
 
 def edad_paciente(d1):
     d2 = datetime.now()
@@ -74,7 +70,6 @@ def get_context_data_pri(self, nomclass,extra,**kwargs):
     context = super(nomclass, self).get_context_data(**kwargs) 
     context['paciente']= paciente
     context['extrainfo'] = extra
-    print(context)
     return context
 
 
@@ -107,7 +102,6 @@ class CreateOrderView(CreateWithInlinesView):
         extra={'title':'Diagnosticos','page':'Nuevo Diagnostico'}
         context['paciente']= paciente
         context['extrainfo'] = extra
-        print(context)
         return context
 
 
@@ -180,7 +174,6 @@ def get_context_data_pri(self, nomclass,extra,**kwargs):
     context = super(nomclass, self).get_context_data(**kwargs) 
     context['paciente']= paciente
     context['extrainfo'] = extra
-    print(context)
     return context
 
 class EcomamaCreate(CreateView):
@@ -320,6 +313,20 @@ class RayosxCreate(CreateView):
         extrainfo={'title':'Rayos X','page':'Rayos X'}
         return get_context_data_pri(self,RayosxCreate,extrainfo, **kwargs)
 
+class AnalisisCreate(CreateView):
+    model = lab_analisisclinico
+    fields='__all__'
+    template_name='registros/analisis_clinico.html'
+
+    def get_success_url(self):
+        parametro = self.kwargs.get('ident',None)
+        return 'listar/{0}'.format(parametro)
+    def get_initial(self, **kwargs):
+        return get_initial_pri(self, **kwargs)
+    def get_context_data(self, **kwargs):
+        extrainfo={'title':'Analisis clinico','page':'Analisis clinico'}
+        return get_context_data_pri(self,AnalisisCreate,extrainfo, **kwargs)
+
 ################################################
 ############# LISTAR DIAGNOSTICOS# #############
 ################################################
@@ -340,7 +347,6 @@ class Listecoabdomen(DetailView):
         parametro = self.kwargs.get('pk',None)
         analisis = analisisAbdominal.objects.filter(paciente__id=parametro)
         context['analisis']=analisis
-        print(context)
         return context
     
 
@@ -352,7 +358,6 @@ class Listecoginecologo(DetailView):
         parametro = self.kwargs.get('pk',None)
         analisis = ecografiaginecologico.objects.filter(paciente__id=parametro)
         context['analisis']=analisis
-        print(context)
         return context
 
 class Listecomamas(DetailView):
@@ -363,7 +368,6 @@ class Listecomamas(DetailView):
         parametro = self.kwargs.get('pk',None)
         analisis = analisisMamas.objects.filter(paciente__id=parametro)
         context['analisis']=analisis
-        print(context)
         return context
 
 class Listecoobstetrico(DetailView):
@@ -374,7 +378,6 @@ class Listecoobstetrico(DetailView):
         parametro = self.kwargs.get('pk',None)
         analisis = analisisObstetrico.objects.filter(paciente__id=parametro)
         context['analisis']=analisis
-        print(context)
         return context
 
 class Listecorenal(DetailView):
@@ -385,7 +388,6 @@ class Listecorenal(DetailView):
         parametro = self.kwargs.get('pk',None)
         analisis = ecografiaRenal.objects.filter(paciente__id=parametro)
         context['analisis']=analisis
-        print(context)
         return context
 
 class Listecotesticular(DetailView):
@@ -396,5 +398,54 @@ class Listecotesticular(DetailView):
         parametro = self.kwargs.get('pk',None)
         analisis = ecografiatesticular.objects.filter(paciente__id=parametro)
         context['analisis']=analisis
-        print(context)
+        return context
+
+class ListeAnalisisclinico(DetailView):
+    model = Paciente
+    template_name='registros/listar_otros/listar_analisis.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = lab_analisisclinico.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
+        return context
+
+class ListeRayosx(DetailView):
+    model = Paciente
+    template_name='registros/listar_otros/listar_rayosx.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = rayosx.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
+        return context
+
+class ListeDesintrometria(DetailView):
+    model = Paciente
+    template_name='registros/listar_otros/listar_desintometria.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = desintometria.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
+        return context
+    
+class ListeEkg(DetailView):
+    model = Paciente
+    template_name='registros/listar_otros/listar_ekg.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = ekg.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
+        return context
+
+class ListeTerapias(DetailView):
+    model = Paciente
+    template_name='registros/listar_otros/listar_terapias.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parametro = self.kwargs.get('pk',None)
+        analisis = terapias.objects.filter(paciente__id=parametro)
+        context['analisis']=analisis
         return context

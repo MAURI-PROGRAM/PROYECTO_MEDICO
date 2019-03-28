@@ -1,0 +1,579 @@
+{% extends 'registros/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{extrainfo.title}}{% endblock %}
+
+{% block principal %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'registros:index'%}">Inicio</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'registros:buscar'%}">Busqueda de pacientes</a>
+</li>
+{% endblock %}
+
+{%block derecha%}
+</div>
+<div style="color:aliceblue">PACIENTE :
+    {{paciente.nombre1}}&nbsp{{paciente.nombre2}}&nbsp{{paciente.apellPadre}}&nbsp{{paciente.apellMadre}}
+</div>
+{%endblock%}
+
+{% block lista %}
+<li class="breadcrumb-item"><a href="{% url 'registros:index'%}">Inicio</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:buscar'%}">Busqueda</a></li>
+<li class="breadcrumb-item"><a href="{% url 'registros:paciente' ident=paciente.pk %}">Paciente</a></li>
+{% if  extrainfo.verif %}
+<li class="breadcrumb-item"><a href="{% url 'registros:ecografia' ident=paciente.pk %}">Ecografias</a></li>
+{% endif %}
+
+<li class="breadcrumb-item active" aria-current="page">{{extrainfo.page}}</li>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <form method="post">{% csrf_token %}
+
+
+            <div class="container">
+                <div class="panel-group" id="accordion">
+                    <div class="form-group"> <label
+                            for="{{ form.paciente.id_for_label }}">{{ form.paciente.label_tag  }} </label>
+                        {{ form.paciente}}</div>
+                        <div class="form-group"> <label
+                            for="{{ form.encargado.id_for_label }}">{{ form.encargado.label_tag  }} </label>
+                        {{ form.encargado}}</div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">HEMATOLOGIA</a>
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="form-group"> {{ form.hematies.errors }} <label
+                                    for="{{ form.hematies.id_for_label }}">{{ form.hematies.label_tag  }} </label>
+                                {{ form.hematies}}</div>
+                            <div class="form-group"> {{ form.leucocitos.errors }} <label
+                                    for="{{ form.leucocitos.id_for_label }}">{{ form.leucocitos.label_tag  }} </label>
+                                {{ form.leucocitos}}</div>
+                            <div class="form-group"> {{ form.hematocrito.errors }} <label
+                                    for="{{ form.hematocrito.id_for_label }}">{{ form.hematocrito.label_tag  }} </label>
+                                {{ form.hematocrito}}</div>
+                            <div class="form-group"> {{ form.hemoglobina.errors }} <label
+                                    for="{{ form.hemoglobina.id_for_label }}">{{ form.hemoglobina.label_tag  }} </label>
+                                {{ form.hemoglobina}}</div>
+                            <div class="form-group"> {{ form.hdeshiling.errors }} <label
+                                    for="{{ form.hdeshiling.id_for_label }}">{{ form.hdeshiling.label_tag  }} </label>
+                                {{ form.hdeshiling}}</div>
+                            <div class="form-group"> {{ form.eritrosidimentacion.errors }} <label
+                                    for="{{ form.eritrosidimentacion.id_for_label }}">{{ form.eritrosidimentacion.label_tag  }}
+                                </label> {{ form.eritrosidimentacion}}</div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">COAGULACIONY
+                                    HEMOSTASIA</a>
+                            </h4>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse in">
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.plaquetas.id_for_label }}">{{ form.plaquetas.label_tag  }} </label>
+                                {{ form.plaquetas}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.reticulocitos.id_for_label }}">{{ form.reticulocitos.label_tag  }}
+                                </label> {{ form.reticulocitos}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.tdesangria.id_for_label }}">{{ form.tdesangria.label_tag  }} </label>
+                                {{ form.tdesangria}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.tdecoagulacion.id_for_label }}">{{ form.tdecoagulacion.label_tag  }}
+                                </label> {{ form.tdecoagulacion}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.tdeprotombina.id_for_label }}">{{ form.tdeprotombina.label_tag  }}
+                                </label> {{ form.tdeprotombina}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.tdetromboplast.id_for_label }}">{{ form.tdetromboplast.label_tag  }}
+                                </label> {{ form.tdetromboplast}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.fibrinogeno.id_for_label }}">{{ form.fibrinogeno.label_tag  }} </label>
+                                {{ form.fibrinogeno}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.gruposanguineo.id_for_label }}">{{ form.gruposanguineo.label_tag  }}
+                                </label> {{ form.gruposanguineo}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.factorrh.id_for_label }}">{{ form.factorrh.label_tag  }} </label>
+                                {{ form.factorrh}}</div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">SEROLOGÍA</a>
+                            </h4>
+                        </div>
+                        <div id="collapse3" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.rdewidal.id_for_label }}">{{ form.rdewidal.label_tag  }} </label> {{ form.rdewidal}}
+                            </div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.plasmodium.id_for_label }}">{{ form.plasmodium.label_tag  }} </label>
+                                {{ form.plasmodium}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.vdrlcualit.id_for_label }}">{{ form.vdrlcualit.label_tag  }} </label>
+                                {{ form.vdrlcualit}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.vdrlcuantit.id_for_label }}">{{ form.vdrlcuantit.label_tag  }} </label>
+                                {{ form.vdrlcuantit}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.testdecombs.id_for_label }}">{{ form.testdecombs.label_tag  }} </label>
+                                {{ form.testdecombs}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.rcreactiva.id_for_label }}">{{ form.rcreactiva.label_tag  }} </label>
+                                {{ form.rcreactiva}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.ratest.id_for_label }}">{{ form.ratest.label_tag  }} </label> {{ form.ratest}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.asto.id_for_label }}">{{ form.asto.label_tag  }} </label> {{ form.asto}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.factorrematoideo.id_for_label }}">{{ form.factorrematoideo.label_tag  }} </label>
+                                {{ form.factorrematoideo}}</div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">QUÍMICOS</a>
+                            </h4>
+                        </div>
+                        <div id="collapse4" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.acurico.id_for_label }}">{{ form.acurico.label_tag  }} </label> {{ form.acurico}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.urea.id_for_label }}">{{ form.urea.label_tag  }} </label> {{ form.urea}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.creatinina.id_for_label }}">{{ form.creatinina.label_tag  }} </label>
+                                {{ form.creatinina}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.glucosa.id_for_label }}">{{ form.glucosa.label_tag  }} </label> {{ form.glucosa}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.glucosapostprandial.id_for_label }}">{{ form.glucosapostprandial.label_tag  }} </label>
+                                {{ form.glucosapostprandial}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.hemoglobinaglicosilada.id_for_label }}">{{ form.hemoglobinaglicosilada.label_tag  }}
+                                </label> {{ form.hemoglobinaglicosilada}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.testtoleranciaglucosa.id_for_label }}">{{ form.testtoleranciaglucosa.label_tag  }}
+                                </label> {{ form.testtoleranciaglucosa}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.colesterol.id_for_label }}">{{ form.colesterol.label_tag  }} </label>
+                                {{ form.colesterol}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.hdlcoleseterol.id_for_label }}">{{ form.hdlcoleseterol.label_tag  }} </label>
+                                {{ form.hdlcoleseterol}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.ldlcolesterol.id_for_label }}">{{ form.ldlcolesterol.label_tag  }} </label>
+                                {{ form.ldlcolesterol}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.trigliceridos.id_for_label }}">{{ form.trigliceridos.label_tag  }} </label>
+                                {{ form.trigliceridos}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.lipidostotales.id_for_label }}">{{ form.lipidostotales.label_tag  }} </label>
+                                {{ form.lipidostotales}}</div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">ELECTROLITOS</a>
+                            </h4>
+                        </div>
+                        <div id="collapse5" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.sodio.id_for_label }}">{{ form.sodio.label_tag  }} </label> {{ form.sodio}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.cloro.id_for_label }}">{{ form.cloro.label_tag  }} </label> {{ form.cloro}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.potasio.id_for_label }}">{{ form.potasio.label_tag  }} </label> {{ form.potasio}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.calcio.id_for_label }}">{{ form.calcio.label_tag  }} </label> {{ form.calcio}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.magnesio.id_for_label }}">{{ form.magnesio.label_tag  }} </label> {{ form.magnesio}}
+                            </div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.feserico.id_for_label }}">{{ form.feserico.label_tag  }} </label> {{ form.feserico}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">PRUEBAS EPÁTICAS</a>
+                            </h4>
+                        </div>
+                        <div id="collapse6" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.bilirrubinatotal.id_for_label }}">{{ form.bilirrubinatotal.label_tag  }} </label>
+                                {{ form.bilirrubinatotal}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.bdirecta.id_for_label }}">{{ form.bdirecta.label_tag  }} </label> {{ form.bdirecta}}
+                            </div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.bindirecta.id_for_label }}">{{ form.bindirecta.label_tag  }} </label>
+                                {{ form.bindirecta}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.indicterico.id_for_label }}">{{ form.indicterico.label_tag  }} </label>
+                                {{ form.indicterico}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.proteinastotales.id_for_label }}">{{ form.proteinastotales.label_tag  }} </label>
+                                {{ form.proteinastotales}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.albumina.id_for_label }}">{{ form.albumina.label_tag  }} </label> {{ form.albumina}}
+                            </div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.globulina.id_for_label }}">{{ form.globulina.label_tag  }} </label> {{ form.globulina}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">ENZIMAS</a>
+                            </h4>
+                        </div>
+                        <div id="collapse7" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.got.id_for_label }}">{{ form.got.label_tag  }} </label> {{ form.got}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.gpt.id_for_label }}">{{ form.gpt.label_tag  }} </label> {{ form.gpt}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.colinesterasa.id_for_label }}">{{ form.colinesterasa.label_tag  }} </label>
+                                {{ form.colinesterasa}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.dlh.id_for_label }}">{{ form.dlh.label_tag  }} </label> {{ form.dlh}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.fofatalcalina.id_for_label }}">{{ form.fofatalcalina.label_tag  }} </label>
+                                {{ form.fofatalcalina}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.fofatacidaprost.id_for_label }}">{{ form.fofatacidaprost.label_tag  }} </label>
+                                {{ form.fofatacidaprost}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.ggtp.id_for_label }}">{{ form.ggtp.label_tag  }} </label> {{ form.ggtp}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.cpk.id_for_label }}">{{ form.cpk.label_tag  }} </label> {{ form.cpk}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.cpkmb.id_for_label }}">{{ form.cpkmb.label_tag  }} </label> {{ form.cpkmb}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.amilasaorina.id_for_label }}">{{ form.amilasaorina.label_tag  }} </label>
+                                {{ form.amilasaorina}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.amilasaserica.id_for_label }}">{{ form.amilasaserica.label_tag  }} </label>
+                                {{ form.amilasaserica}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.lipasaserica.id_for_label }}">{{ form.lipasaserica.label_tag  }} </label>
+                                {{ form.lipasaserica}}</div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">EXAMENES ESPECIALES</a>
+                            </h4>
+                        </div>
+                        <div id="collapse7" class="panel-collapse collapse in">
+                                
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">INMUNOLOGICO</a>
+                            </h4>
+                        </div>
+                        <div id="collapse8" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.toxoplasmalgg.id_for_label }}">{{ form.toxoplasmalgg.label_tag  }} </label>
+                                {{ form.toxoplasmalgg}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.toxoplasmalgm.id_for_label }}">{{ form.toxoplasmalgm.label_tag  }} </label>
+                                {{ form.toxoplasmalgm}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.hepatitisalgg.id_for_label }}">{{ form.hepatitisalgg.label_tag  }} </label>
+                                {{ form.hepatitisalgg}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.hepatitisalgm.id_for_label }}">{{ form.hepatitisalgm.label_tag  }} </label>
+                                {{ form.hepatitisalgm}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.hepatitisbhbsag.id_for_label }}">{{ form.hepatitisbhbsag.label_tag  }} </label>
+                                {{ form.hepatitisbhbsag}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.hepatitisc.id_for_label }}">{{ form.hepatitisc.label_tag  }} </label>
+                                {{ form.hepatitisc}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.vurusherpes1lgg.id_for_label }}">{{ form.vurusherpes1lgg.label_tag  }} </label>
+                                {{ form.vurusherpes1lgg}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.vurusherpes1y2lgm.id_for_label }}">{{ form.vurusherpes1y2lgm.label_tag  }} </label>
+                                {{ form.vurusherpes1y2lgm}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.vurusherpes2lgg.id_for_label }}">{{ form.vurusherpes2lgg.label_tag  }} </label>
+                                {{ form.vurusherpes2lgg}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.dengue.id_for_label }}">{{ form.dengue.label_tag  }} </label> {{ form.dengue}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.vih.id_for_label }}">{{ form.vih.label_tag  }} </label> {{ form.vih}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.ige.id_for_label }}">{{ form.ige.label_tag  }} </label> {{ form.ige}}</div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">MARCADORES TUMORALES</a>
+                            </h4>
+                        </div>
+                        <div id="collapse9" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.alfafetoproteina.id_for_label }}">{{ form.alfafetoproteina.label_tag  }} </label>
+                                {{ form.alfafetoproteina}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.agcarcinoembrionario.id_for_label }}">{{ form.agcarcinoembrionario.label_tag  }}
+                                </label> {{ form.agcarcinoembrionario}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.agprostespcif.id_for_label }}">{{ form.agprostespcif.label_tag  }} </label>
+                                {{ form.agprostespcif}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.agprostespecificolibre.id_for_label }}">{{ form.agprostespecificolibre.label_tag  }}
+                                </label> {{ form.agprostespecificolibre}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.ca153mama.id_for_label }}">{{ form.ca153mama.label_tag  }} </label> {{ form.ca153mama}}
+                            </div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.ca125ovario.id_for_label }}">{{ form.ca125ovario.label_tag  }} </label>
+                                {{ form.ca125ovario}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.ca724gastrico.id_for_label }}">{{ form.ca724gastrico.label_tag  }} </label>
+                                {{ form.ca724gastrico}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.ca199pancreas.id_for_label }}">{{ form.ca199pancreas.label_tag  }} </label>
+                                {{ form.ca199pancreas}}</div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">HORMONAS</a>
+                            </h4>
+                        </div>
+                        <div id="collapse10" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label for="{{ form.t3.id_for_label }}">{{ form.t3.label_tag  }}
+                                    </label> {{ form.t3}}</div>
+                                <div class="form-group"> {{ form..errors }} <label for="{{ form.t4.id_for_label }}">{{ form.t4.label_tag  }}
+                                    </label> {{ form.t4}}</div>
+                                <div class="form-group"> {{ form..errors }} <label
+                                        for="{{ form.tsh.id_for_label }}">{{ form.tsh.label_tag  }} </label> {{ form.tsh}}</div>
+                                <div class="form-group"> {{ form..errors }} <label
+                                        for="{{ form.fsh.id_for_label }}">{{ form.fsh.label_tag  }} </label> {{ form.fsh}}</div>
+                                <div class="form-group"> {{ form..errors }} <label
+                                        for="{{ form.prolactina.id_for_label }}">{{ form.prolactina.label_tag  }} </label>
+                                    {{ form.prolactina}}</div>
+                                <div class="form-group"> {{ form..errors }} <label
+                                        for="{{ form.progesterona.id_for_label }}">{{ form.progesterona.label_tag  }} </label>
+                                    {{ form.progesterona}}</div>
+                                <div class="form-group"> {{ form..errors }} <label
+                                        for="{{ form.betaestradiol.id_for_label }}">{{ form.betaestradiol.label_tag  }} </label>
+                                    {{ form.betaestradiol}}</div>
+                                <div class="form-group"> {{ form..errors }} <label
+                                        for="{{ form.testosterona.id_for_label }}">{{ form.testosterona.label_tag  }} </label>
+                                    {{ form.testosterona}}</div>
+                                <div class="form-group"> {{ form..errors }} <label
+                                        for="{{ form.hcgsubbetaembarazo.id_for_label }}">{{ form.hcgsubbetaembarazo.label_tag  }} </label>
+                                    {{ form.hcgsubbetaembarazo}}</div>
+                                <div class="form-group"> {{ form..errors }} <label
+                                        for="{{ form.hcgsubbetacuantit.id_for_label }}">{{ form.hcgsubbetacuantit.label_tag  }} </label>
+                                    {{ form.hcgsubbetacuantit}}</div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">ORINA</a>
+                            </h4>
+                        </div>
+                        <div id="collapse11" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.fisico.id_for_label }}">{{ form.fisico.label_tag  }} </label> {{ form.fisico}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.quimico.id_for_label }}">{{ form.quimico.label_tag  }} </label> {{ form.quimico}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.sedimiento.id_for_label }}">{{ form.sedimiento.label_tag  }} </label>
+                                {{ form.sedimiento}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.cultivoyambiograma.id_for_label }}">{{ form.cultivoyambiograma.label_tag  }} </label>
+                                {{ form.cultivoyambiograma}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.contajedecolonias.id_for_label }}">{{ form.contajedecolonias.label_tag  }} </label>
+                                {{ form.contajedecolonias}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.gravindex.id_for_label }}">{{ form.gravindex.label_tag  }} </label> {{ form.gravindex}}
+                            </div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.depuraciondecreatinina.id_for_label }}">{{ form.depuraciondecreatinina.label_tag  }}
+                                </label> {{ form.depuraciondecreatinina}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.proteinasenorina.id_for_label }}">{{ form.proteinasenorina.label_tag  }} </label>
+                                {{ form.proteinasenorina}}</div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse12">HECES</a>
+                            </h4>
+                        </div>
+                        <div id="collapse12" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.parasitologico.id_for_label }}">{{ form.parasitologico.label_tag  }} </label>
+                                {{ form.parasitologico}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.porconcentracion.id_for_label }}">{{ form.porconcentracion.label_tag  }} </label>
+                                {{ form.porconcentracion}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.estuddemocofecal.id_for_label }}">{{ form.estuddemocofecal.label_tag  }} </label>
+                                {{ form.estuddemocofecal}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.sangreoculta.id_for_label }}">{{ form.sangreoculta.label_tag  }} </label>
+                                {{ form.sangreoculta}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.trinciondegram.id_for_label }}">{{ form.trinciondegram.label_tag  }} </label>
+                                {{ form.trinciondegram}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.cultivoyantibiograma.id_for_label }}">{{ form.cultivoyantibiograma.label_tag  }}
+                                </label> {{ form.cultivoyantibiograma}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.rotavirus.id_for_label }}">{{ form.rotavirus.label_tag  }} </label> {{ form.rotavirus}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse13">ESPUTO</a>
+                            </h4>
+                        </div>
+                        <div id="collapse13" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.parasitos.id_for_label }}">{{ form.parasitos.label_tag  }} </label> {{ form.parasitos}}
+                            </div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.tinciondegram.id_for_label }}">{{ form.tinciondegram.label_tag  }} </label>
+                                {{ form.tinciondegram}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.zielbdek.id_for_label }}">{{ form.zielbdek.label_tag  }} </label> {{ form.zielbdek}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse14">EX. FARINGEO</a>
+                            </h4>
+                        </div>
+                        <div id="collapse14" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.cultivoyantibiogramastrpa.id_for_label }}">{{ form.cultivoyantibiogramastrpa.label_tag  }}
+                                </label> {{ form.cultivoyantibiogramastrpa}}</div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse15">MOCO NASAL</a>
+                            </h4>
+                        </div>
+                        <div id="collapse15" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.porcentdeesosinofilos.id_for_label }}">{{ form.porcentdeesosinofilos.label_tag  }}
+                                </label> {{ form.porcentdeesosinofilos}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.enfresco.id_for_label }}">{{ form.enfresco.label_tag  }} </label> {{ form.enfresco}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse16">SECRECION VAGINAL</a>
+                            </h4>
+                        </div>
+                        <div id="collapse16" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.cultivoyantibiogramavaginal.id_for_label }}">{{ form.cultivoyantibiogramavaginal.label_tag  }}
+                                </label> {{ form.cultivoyantibiogramavaginal}}</div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.chiamydia.id_for_label }}">{{ form.chiamydia.label_tag  }} </label> {{ form.chiamydia}}
+                            </div>
+                            <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.neisseria.id_for_label }}">{{ form.neisseria.label_tag  }} </label> {{ form.neisseria}}
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse17">PAPANICOLAU</a>
+                            </h4>
+                        </div>
+                        <div id="collapse17" class="panel-collapse collapse in">
+                                <div class="form-group"> {{ form..errors }} <label
+                                    for="{{ form.otros.id_for_label }}">{{ form.otros.label_tag  }} </label> {{ form.otros}}</div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+           
+            
+            
+            
+
+
+
+
+            <input type="submit" value="GUARADAR">
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -64,7 +64,7 @@
 		</div>
 		<div class="card-footer text-muted bg-light">
 			<a href="{% url 'registros:rayosx' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-			<a href="#" class="btn btn-outline-info">LISTAR</a>
+			<a href="{% url 'registros:listar_rayosx' datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>
 
@@ -76,7 +76,7 @@
 		</div>
 		<div class="card-footer text-muted bg-light">
 			<a href="{% url 'registros:desintometria' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-			<a href="#" class="btn btn-outline-info">LISTAR</a>
+			<a href="{% url 'registros:listar_desintometria' datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>
 
@@ -88,7 +88,7 @@
 		</div>
 		<div class="card-footer text-muted bg-light">
 			<a href="{% url 'registros:terapias' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-			<a href="#" class="btn btn-outline-info">LISTAR</a>
+			<a href="{% url 'registros:listar_terapias' datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>
 	<div class="card text-white bg-info border border-dark ml-2 mr-4">
@@ -99,9 +99,21 @@
 		</div>
 		<div class="card-footer text-muted bg-light">
 			<a href="{% url 'registros:ekg' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
-			<a href="#" class="btn btn-outline-info">LISTAR</a>
+			<a href="{% url 'registros:listar_ekg' datos.pk%}" class="btn btn-outline-info">LISTAR</a>
+		</div>
+	</div>
+	<div class="card text-white bg-info border border-dark ml-2 mr-4">
+		<!-- <img class="card-img-top" src="EKG.jpg" alt="Card image cap"> -->
+		<div class="card-body">
+			<h5 class="card-title text-dark">Analisis Clinico</h5>
+			<p class="card-text">Analisi clinico del paciente</p>
+		</div>
+		<div class="card-footer text-muted bg-light">
+			<a href="{% url 'registros:analisis' ident=datos.pk%}" class="btn btn-outline-success">NUEVO</a>
+			<a href="{% url 'registros:listar_analisis' datos.pk%}" class="btn btn-outline-info">LISTAR</a>
 		</div>
 	</div>
 
 </div>
+<div class="card-deck"></div>
 {% endblock %}

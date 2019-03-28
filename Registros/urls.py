@@ -33,6 +33,7 @@ urlpatterns = [
 	path('terapias/<ident>', login_required(views.TerapiaCreate.as_view()),name='terapias'),
 	path('rayosx/<ident>',login_required(views.RayosxCreate.as_view()),name='rayosx'),
 	path('desintometria/<ident>', login_required(views.DesintometriaCreate.as_view()),name='desintometria'),
+	path('analisis/<ident>', login_required(views.AnalisisCreate.as_view()),name='analisis'),
 
 	path('ecomama/listar/<pk>', login_required(views.Listecomamas.as_view()),name='listar_ecomama'),
 	path('ecoabdomen/listar/<pk>', login_required(views.Listecoabdomen.as_view()),name='listar_ecoabdomen'),
@@ -40,6 +41,11 @@ urlpatterns = [
 	path('ecorenal/listar/<pk>', login_required(views.Listecorenal.as_view()),name='listar_ecorenal'),
 	path('ecoginecologia/listar/<pk>', login_required(views.Listecoginecologo.as_view()),name='listar_ecoginecologia'),
 	path('ecotesticular/listar/<pk>',login_required(views.Listecotesticular.as_view()),name='listar_ecotesticular'),
+	path('analisis/listar/<pk>',login_required(views.ListeAnalisisclinico.as_view()),name='listar_analisis'),
+	path('rayosx/listar/<pk>',login_required(views.ListeRayosx.as_view()),name='listar_rayosx'),
+	path('desintometria/listar/<pk>',login_required(views.ListeDesintrometria.as_view()),name='listar_desintometria'),
+	path('ekg/listar/<pk>',login_required(views.ListeEkg.as_view()),name='listar_ekg'),
+	path('terapias/listar/<pk>',login_required(views.ListeTerapias.as_view()),name='listar_terapias'),
 
 	path('paciente/listar_diagnostico/<pk>', login_required(views.ListDiagnostico.as_view()),name='lista_diagnostico'),
 	path('paciente/nuevodiagnostico/<ident>', login_required(views.CreateOrderView.as_view()),name='nuevo_diagnostico'),
